@@ -7,6 +7,7 @@
 //
 
 #import "MKAutomat.h"
+#include <stdlib.h>
 
 @implementation MKAutomat
 
@@ -24,7 +25,7 @@
     x = X;
     y = Y;
     boundaryType = periodicBoundaryConditions;
-    NSMutableArray* caMutable = [[NSMutableArray alloc] init];
+    NSMutableArray* caMutable = [NSMutableArray array];
 
     for (NSInteger a = 0; a < y; ++a) {
         [caMutable addObject:[[NSMutableArray alloc] init]];
@@ -42,13 +43,36 @@
 {
     for (NSInteger a = 0; a < y; ++a) {
         for (NSInteger b = 0; b < x; ++b) {
+            MKCell* currentCell = (MKCell*)[[ca objectAtIndex:a] objectAtIndex:b];
+            if (currentCell.isLiving && currentCell.isOnBorder == NO) {
+                continue;
+            }
+            NSSet* neighbors = [self getAllNeighborsForX:b
+                                                    andY:a];
+
+            NSMutableArray* neighborsIds = [NSMutableArray array];
+            bool isOnBorder = NO;
+            for (MKCell* neighbor in neighbors) {
+                if (neighbor.grainId > 0) {
+                    [neighborsIds addObject:[NSNumber numberWithInteger:neighbor.grainId]];
+                }
+                if (neighbor.grainId != currentCell.grainId) {
+                    isOnBorder = YES;
+                }
+            }
+
+            currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
+            currentCell.isLiving = YES;
+            currentCell.isOnBorder = isOnBorder;
         }
     }
+
+    caPrev = [ca copy];
 }
 
 - (NSSet*)getAllNeighborsForX:(NSInteger)X andY:(NSInteger)Y
 {
-    NSMutableSet* ansM = [[NSMutableSet alloc] init];
+    NSMutableSet* ansM = [NSMutableSet set];
 
     switch (self.neighborsType) {
     case MoorNeighborhood:

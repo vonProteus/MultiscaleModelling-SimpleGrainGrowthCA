@@ -14,7 +14,7 @@
 {
     self.grainId = 0;
     self.isLiving = NO;
-    self.isOnBorder = NO;
+    self.isOnBorder = YES;
     return self;
 }
 
