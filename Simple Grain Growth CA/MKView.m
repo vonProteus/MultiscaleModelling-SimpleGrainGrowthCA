@@ -29,6 +29,15 @@
 - (void)mouseDown:(NSEvent*)theEvent
 {
     NSPoint point = [theEvent locationInWindow];
+
+    [_delegate mouseClickAt:point];
+
     DLog(@"%f %f", point.x, point.y);
 }
+
+- (void)dealloc
+{
+    _delegate = nil;
+}
+
 @end

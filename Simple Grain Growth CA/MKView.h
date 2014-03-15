@@ -8,6 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MKView;
+
+@protocol MKViewDelegate
+- (void)mouseClickAt:(NSPoint)p;
+@end
+
 @interface MKView : NSView
+@property (nonatomic, assign) id delegate;
 
 @end

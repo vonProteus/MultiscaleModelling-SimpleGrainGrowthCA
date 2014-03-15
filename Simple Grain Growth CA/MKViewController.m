@@ -13,7 +13,12 @@
 @end
 
 @implementation MKViewController
-@synthesize view = _view;
+
+- (void)awakeFromNib
+{
+    DLog("start");
+    self.view.delegate = self;
+}
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
@@ -40,6 +45,11 @@
 }
 - (IBAction)cleam:(id)sender
 {
+}
+
+- (void)mouseClickAt:(NSPoint)p
+{
+    DLog(@"%f %f", p.x, p.y);
 }
 
 @end

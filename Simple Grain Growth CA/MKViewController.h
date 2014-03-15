@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #include "MKView.h"
 
-@interface MKViewController : NSViewController
+@interface MKViewController : NSViewController <MKViewDelegate>
 @property (retain, nonatomic, readwrite) IBOutlet MKView* view;
 
 - (IBAction)andrzej:(id)sender;
