@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		705BC4AD18D4AFCA00255AD2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4AC18D4AFCA00255AD2 /* Cocoa.framework */; };
+		705BC4B718D4AFCA00255AD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4B518D4AFCA00255AD2 /* InfoPlist.strings */; };
+		705BC4B918D4AFCA00255AD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4B818D4AFCA00255AD2 /* main.m */; };
+		705BC4BD18D4AFCA00255AD2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4BB18D4AFCA00255AD2 /* Credits.rtf */; };
+		705BC4C018D4AFCA00255AD2 /* MKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4BF18D4AFCA00255AD2 /* MKAppDelegate.m */; };
+		705BC4C318D4AFCB00255AD2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4C118D4AFCB00255AD2 /* MainMenu.xib */; };
+		705BC4C518D4AFCB00255AD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4C418D4AFCB00255AD2 /* Images.xcassets */; };
+		705BC4CC18D4AFCB00255AD2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4CB18D4AFCB00255AD2 /* XCTest.framework */; };
+		705BC4CD18D4AFCB00255AD2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4AC18D4AFCA00255AD2 /* Cocoa.framework */; };
+		705BC4D518D4AFCB00255AD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4D318D4AFCB00255AD2 /* InfoPlist.strings */; };
+		705BC4D718D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4D618D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		705BC4CE18D4AFCB00255AD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 705BC4A118D4AFCA00255AD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 705BC4A818D4AFCA00255AD2;
+			remoteInfo = "Simple Grain Growth CA";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		705BC4A918D4AFCA00255AD2 /* Simple Grain Growth CA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Grain Growth CA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		705BC4AC18D4AFCA00255AD2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		705BC4AF18D4AFCA00255AD2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		705BC4B018D4AFCA00255AD2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		705BC4B118D4AFCA00255AD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		705BC4B418D4AFCA00255AD2 /* Simple Grain Growth CA-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Simple Grain Growth CA-Info.plist"; sourceTree = "<group>"; };
+		705BC4B618D4AFCA00255AD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		705BC4B818D4AFCA00255AD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		705BC4BA18D4AFCA00255AD2 /* Simple Grain Growth CA-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple Grain Growth CA-Prefix.pch"; sourceTree = "<group>"; };
+		705BC4BC18D4AFCA00255AD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		705BC4BE18D4AFCA00255AD2 /* MKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAppDelegate.h; sourceTree = "<group>"; };
+		705BC4BF18D4AFCA00255AD2 /* MKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAppDelegate.m; sourceTree = "<group>"; };
+		705BC4C218D4AFCB00255AD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		705BC4C418D4AFCB00255AD2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		705BC4CA18D4AFCB00255AD2 /* Simple Grain Growth CATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Grain Growth CATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		705BC4CB18D4AFCB00255AD2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		705BC4D218D4AFCB00255AD2 /* Simple Grain Growth CATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Simple Grain Growth CATests-Info.plist"; sourceTree = "<group>"; };
+		705BC4D418D4AFCB00255AD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		705BC4D618D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simple_Grain_Growth_CATests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		705BC4A618D4AFCA00255AD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705BC4AD18D4AFCA00255AD2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		705BC4C718D4AFCB00255AD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705BC4CD18D4AFCB00255AD2 /* Cocoa.framework in Frameworks */,
+				705BC4CC18D4AFCB00255AD2 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		705BC4A018D4AFCA00255AD2 = {
+			isa = PBXGroup;
+			children = (
+				705BC4B218D4AFCA00255AD2 /* Simple Grain Growth CA */,
+				705BC4D018D4AFCB00255AD2 /* Simple Grain Growth CATests */,
+				705BC4AB18D4AFCA00255AD2 /* Frameworks */,
+				705BC4AA18D4AFCA00255AD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		705BC4AA18D4AFCA00255AD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				705BC4A918D4AFCA00255AD2 /* Simple Grain Growth CA.app */,
+				705BC4CA18D4AFCB00255AD2 /* Simple Grain Growth CATests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		705BC4AB18D4AFCA00255AD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				705BC4AC18D4AFCA00255AD2 /* Cocoa.framework */,
+				705BC4CB18D4AFCB00255AD2 /* XCTest.framework */,
+				705BC4AE18D4AFCA00255AD2 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		705BC4AE18D4AFCA00255AD2 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				705BC4AF18D4AFCA00255AD2 /* AppKit.framework */,
+				705BC4B018D4AFCA00255AD2 /* CoreData.framework */,
+				705BC4B118D4AFCA00255AD2 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		705BC4B218D4AFCA00255AD2 /* Simple Grain Growth CA */ = {
+			isa = PBXGroup;
+			children = (
+				705BC4BE18D4AFCA00255AD2 /* MKAppDelegate.h */,
+				705BC4BF18D4AFCA00255AD2 /* MKAppDelegate.m */,
+				705BC4C118D4AFCB00255AD2 /* MainMenu.xib */,
+				705BC4C418D4AFCB00255AD2 /* Images.xcassets */,
+				705BC4B318D4AFCA00255AD2 /* Supporting Files */,
+			);
+			path = "Simple Grain Growth CA";
+			sourceTree = "<group>";
+		};
+		705BC4B318D4AFCA00255AD2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				705BC4B418D4AFCA00255AD2 /* Simple Grain Growth CA-Info.plist */,
+				705BC4B518D4AFCA00255AD2 /* InfoPlist.strings */,
+				705BC4B818D4AFCA00255AD2 /* main.m */,
+				705BC4BA18D4AFCA00255AD2 /* Simple Grain Growth CA-Prefix.pch */,
+				705BC4BB18D4AFCA00255AD2 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		705BC4D018D4AFCB00255AD2 /* Simple Grain Growth CATests */ = {
+			isa = PBXGroup;
+			children = (
+				705BC4D618D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m */,
+				705BC4D118D4AFCB00255AD2 /* Supporting Files */,
+			);
+			path = "Simple Grain Growth CATests";
+			sourceTree = "<group>";
+		};
+		705BC4D118D4AFCB00255AD2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				705BC4D218D4AFCB00255AD2 /* Simple Grain Growth CATests-Info.plist */,
+				705BC4D318D4AFCB00255AD2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		705BC4A818D4AFCA00255AD2 /* Simple Grain Growth CA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 705BC4DA18D4AFCB00255AD2 /* Build configuration list for PBXNativeTarget "Simple Grain Growth CA" */;
+			buildPhases = (
+				705BC4A518D4AFCA00255AD2 /* Sources */,
+				705BC4A618D4AFCA00255AD2 /* Frameworks */,
+				705BC4A718D4AFCA00255AD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Simple Grain Growth CA";
+			productName = "Simple Grain Growth CA";
+			productReference = 705BC4A918D4AFCA00255AD2 /* Simple Grain Growth CA.app */;
+			productType = "com.apple.product-type.application";
+		};
+		705BC4C918D4AFCB00255AD2 /* Simple Grain Growth CATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 705BC4DD18D4AFCB00255AD2 /* Build configuration list for PBXNativeTarget "Simple Grain Growth CATests" */;
+			buildPhases = (
+				705BC4C618D4AFCB00255AD2 /* Sources */,
+				705BC4C718D4AFCB00255AD2 /* Frameworks */,
+				705BC4C818D4AFCB00255AD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				705BC4CF18D4AFCB00255AD2 /* PBXTargetDependency */,
+			);
+			name = "Simple Grain Growth CATests";
+			productName = "Simple Grain Growth CATests";
+			productReference = 705BC4CA18D4AFCB00255AD2 /* Simple Grain Growth CATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		705BC4A118D4AFCA00255AD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MK;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Photep;
+				TargetAttributes = {
+					705BC4C918D4AFCB00255AD2 = {
+						TestTargetID = 705BC4A818D4AFCA00255AD2;
+					};
+				};
+			};
+			buildConfigurationList = 705BC4A418D4AFCA00255AD2 /* Build configuration list for PBXProject "Simple Grain Growth CA" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 705BC4A018D4AFCA00255AD2;
+			productRefGroup = 705BC4AA18D4AFCA00255AD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				705BC4A818D4AFCA00255AD2 /* Simple Grain Growth CA */,
+				705BC4C918D4AFCB00255AD2 /* Simple Grain Growth CATests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		705BC4A718D4AFCA00255AD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705BC4B718D4AFCA00255AD2 /* InfoPlist.strings in Resources */,
+				705BC4C518D4AFCB00255AD2 /* Images.xcassets in Resources */,
+				705BC4BD18D4AFCA00255AD2 /* Credits.rtf in Resources */,
+				705BC4C318D4AFCB00255AD2 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		705BC4C818D4AFCB00255AD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705BC4D518D4AFCB00255AD2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		705BC4A518D4AFCA00255AD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705BC4C018D4AFCA00255AD2 /* MKAppDelegate.m in Sources */,
+				705BC4B918D4AFCA00255AD2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		705BC4C618D4AFCB00255AD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705BC4D718D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		705BC4CF18D4AFCB00255AD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 705BC4A818D4AFCA00255AD2 /* Simple Grain Growth CA */;
+			targetProxy = 705BC4CE18D4AFCB00255AD2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		705BC4B518D4AFCA00255AD2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				705BC4B618D4AFCA00255AD2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		705BC4BB18D4AFCA00255AD2 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				705BC4BC18D4AFCA00255AD2 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		705BC4C118D4AFCB00255AD2 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				705BC4C218D4AFCB00255AD2 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		705BC4D318D4AFCB00255AD2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				705BC4D418D4AFCB00255AD2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		705BC4D818D4AFCB00255AD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		705BC4D918D4AFCB00255AD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		705BC4DB18D4AFCB00255AD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Simple Grain Growth CA/Simple Grain Growth CA-Prefix.pch";
+				INFOPLIST_FILE = "Simple Grain Growth CA/Simple Grain Growth CA-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		705BC4DC18D4AFCB00255AD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Simple Grain Growth CA/Simple Grain Growth CA-Prefix.pch";
+				INFOPLIST_FILE = "Simple Grain Growth CA/Simple Grain Growth CA-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		705BC4DE18D4AFCB00255AD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Simple Grain Growth CA.app/Contents/MacOS/Simple Grain Growth CA";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Simple Grain Growth CA/Simple Grain Growth CA-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Simple Grain Growth CATests/Simple Grain Growth CATests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		705BC4DF18D4AFCB00255AD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Simple Grain Growth CA.app/Contents/MacOS/Simple Grain Growth CA";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Simple Grain Growth CA/Simple Grain Growth CA-Prefix.pch";
+				INFOPLIST_FILE = "Simple Grain Growth CATests/Simple Grain Growth CATests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		705BC4A418D4AFCA00255AD2 /* Build configuration list for PBXProject "Simple Grain Growth CA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				705BC4D818D4AFCB00255AD2 /* Debug */,
+				705BC4D918D4AFCB00255AD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		705BC4DA18D4AFCB00255AD2 /* Build configuration list for PBXNativeTarget "Simple Grain Growth CA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				705BC4DB18D4AFCB00255AD2 /* Debug */,
+				705BC4DC18D4AFCB00255AD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		705BC4DD18D4AFCB00255AD2 /* Build configuration list for PBXNativeTarget "Simple Grain Growth CATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				705BC4DE18D4AFCB00255AD2 /* Debug */,
+				705BC4DF18D4AFCB00255AD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 705BC4A118D4AFCA00255AD2 /* Project object */;
+}
