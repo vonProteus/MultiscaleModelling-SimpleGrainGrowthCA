@@ -1,3 +1,3 @@
 Simple Grain Growth CA
 =======================================
-Projekt Multiscale Modelling z AGH 2014
+Projekt na Multiscale Modelling z AGH 2014
