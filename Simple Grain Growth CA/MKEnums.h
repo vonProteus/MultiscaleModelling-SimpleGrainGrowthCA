@@ -21,3 +21,9 @@ enum NeighborsTypes {
     Hex3,
     Hex4
 };
+
+enum ViewStatus {
+    addGrain,
+    addDislocation,
+    doNothingView,
+};

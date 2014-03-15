@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MKCell.h"
+#import "MKAutomat.h"
 
 @class MKView;
 
@@ -14,7 +16,12 @@
 - (void)mouseClickAt:(NSPoint)p;
 @end
 
-@interface MKView : NSView
+@interface MKView : NSView {
+    NSMutableArray* colors;
+    NSMutableArray* toDraw;
+}
 @property (nonatomic, assign) id delegate;
+
+- (void)showAutomat:(MKAutomat*)automat;
 
 @end

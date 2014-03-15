@@ -674,23 +674,23 @@
         <window title="Simple Grain Growth CA" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="603" height="533"/>
+            <rect key="contentRect" x="335" y="390" width="667" height="577"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="100" height="100"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="603" height="533"/>
+                <rect key="frame" x="0.0" y="0.0" width="667" height="577"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="yZc-JU-eM7" customClass="MKView">
-                        <rect key="frame" x="0.0" y="0.0" width="603" height="533"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="577"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="yZc-JU-eM7" secondAttribute="bottom" id="7UJ-gX-ulD"/>
-                    <constraint firstAttribute="trailing" secondItem="yZc-JU-eM7" secondAttribute="trailing" id="Cyy-Rv-MaP"/>
-                    <constraint firstItem="yZc-JU-eM7" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="l3X-db-HdN"/>
-                    <constraint firstItem="yZc-JU-eM7" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="mwg-y8-40j"/>
+                    <constraint firstItem="yZc-JU-eM7" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="7qD-MB-ajm"/>
+                    <constraint firstItem="yZc-JU-eM7" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="B3z-tE-CSG"/>
+                    <constraint firstAttribute="trailing" secondItem="yZc-JU-eM7" secondAttribute="trailing" id="FFy-hW-Rpu"/>
+                    <constraint firstAttribute="bottom" secondItem="yZc-JU-eM7" secondAttribute="bottom" id="I9d-nI-n3M"/>
                 </constraints>
             </view>
         </window>
