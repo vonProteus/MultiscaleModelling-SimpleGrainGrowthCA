@@ -16,10 +16,10 @@
 		705BC4C518D4AFCB00255AD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4C418D4AFCB00255AD2 /* Images.xcassets */; };
 		705BC4CC18D4AFCB00255AD2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4CB18D4AFCB00255AD2 /* XCTest.framework */; };
 		705BC4CD18D4AFCB00255AD2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4AC18D4AFCA00255AD2 /* Cocoa.framework */; };
-		705BC4D518D4AFCB00255AD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4D318D4AFCB00255AD2 /* InfoPlist.strings */; };
-		705BC4D718D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4D618D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m */; };
 		705BC4E418D4B0B800255AD2 /* MKCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4E318D4B0B800255AD2 /* MKCell.m */; };
 		705BC4E718D4B0CC00255AD2 /* MKAutomat.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4E618D4B0CC00255AD2 /* MKAutomat.m */; };
+		70F2C22418D4CD8800CB5724 /* MKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F2C22318D4CD8800CB5724 /* MKViewController.m */; };
+		70F2C22718D4D42600CB5724 /* MKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F2C22618D4D42600CB5724 /* MKView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,14 +49,15 @@
 		705BC4C418D4AFCB00255AD2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		705BC4CA18D4AFCB00255AD2 /* Simple Grain Growth CATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Grain Growth CATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		705BC4CB18D4AFCB00255AD2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		705BC4D218D4AFCB00255AD2 /* Simple Grain Growth CATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Simple Grain Growth CATests-Info.plist"; sourceTree = "<group>"; };
-		705BC4D418D4AFCB00255AD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		705BC4D618D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simple_Grain_Growth_CATests.m; sourceTree = "<group>"; };
 		705BC4E218D4B0B800255AD2 /* MKCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCell.h; sourceTree = "<group>"; };
 		705BC4E318D4B0B800255AD2 /* MKCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCell.m; sourceTree = "<group>"; };
 		705BC4E518D4B0CC00255AD2 /* MKAutomat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAutomat.h; sourceTree = "<group>"; };
 		705BC4E618D4B0CC00255AD2 /* MKAutomat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAutomat.m; sourceTree = "<group>"; };
 		70F2C22018D4B92F00CB5724 /* MKEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnums.h; sourceTree = "<group>"; };
+		70F2C22218D4CD8800CB5724 /* MKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewController.h; sourceTree = "<group>"; };
+		70F2C22318D4CD8800CB5724 /* MKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKViewController.m; sourceTree = "<group>"; };
+		70F2C22518D4D42600CB5724 /* MKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKView.h; sourceTree = "<group>"; };
+		70F2C22618D4D42600CB5724 /* MKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				705BC4B218D4AFCA00255AD2 /* Simple Grain Growth CA */,
-				705BC4D018D4AFCB00255AD2 /* Simple Grain Growth CATests */,
 				705BC4AB18D4AFCA00255AD2 /* Frameworks */,
 				705BC4AA18D4AFCA00255AD2 /* Products */,
 			);
@@ -122,8 +122,9 @@
 		705BC4B218D4AFCA00255AD2 /* Simple Grain Growth CA */ = {
 			isa = PBXGroup;
 			children = (
-				70F2C22018D4B92F00CB5724 /* MKEnums.h */,
+				70F2C22118D4CD6900CB5724 /* view */,
 				705BC4E118D4B09100255AD2 /* model */,
+				70F2C22018D4B92F00CB5724 /* MKEnums.h */,
 				705BC4BE18D4AFCA00255AD2 /* MKAppDelegate.h */,
 				705BC4BF18D4AFCA00255AD2 /* MKAppDelegate.m */,
 				705BC4C118D4AFCB00255AD2 /* MainMenu.xib */,
@@ -145,24 +146,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		705BC4D018D4AFCB00255AD2 /* Simple Grain Growth CATests */ = {
-			isa = PBXGroup;
-			children = (
-				705BC4D618D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m */,
-				705BC4D118D4AFCB00255AD2 /* Supporting Files */,
-			);
-			path = "Simple Grain Growth CATests";
-			sourceTree = "<group>";
-		};
-		705BC4D118D4AFCB00255AD2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				705BC4D218D4AFCB00255AD2 /* Simple Grain Growth CATests-Info.plist */,
-				705BC4D318D4AFCB00255AD2 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		705BC4E118D4B09100255AD2 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +155,17 @@
 				705BC4E618D4B0CC00255AD2 /* MKAutomat.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		70F2C22118D4CD6900CB5724 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				70F2C22218D4CD8800CB5724 /* MKViewController.h */,
+				70F2C22318D4CD8800CB5724 /* MKViewController.m */,
+				70F2C22518D4D42600CB5724 /* MKView.h */,
+				70F2C22618D4D42600CB5724 /* MKView.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +257,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				705BC4D518D4AFCB00255AD2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70F2C22418D4CD8800CB5724 /* MKViewController.m in Sources */,
 				705BC4C018D4AFCA00255AD2 /* MKAppDelegate.m in Sources */,
+				70F2C22718D4D42600CB5724 /* MKView.m in Sources */,
 				705BC4E718D4B0CC00255AD2 /* MKAutomat.m in Sources */,
 				705BC4B918D4AFCA00255AD2 /* main.m in Sources */,
 				705BC4E418D4B0B800255AD2 /* MKCell.m in Sources */,
@@ -301,7 +296,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				705BC4D718D4AFCB00255AD2 /* Simple_Grain_Growth_CATests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,14 +332,6 @@
 				705BC4C218D4AFCB00255AD2 /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		705BC4D318D4AFCB00255AD2 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				705BC4D418D4AFCB00255AD2 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
