@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "MKCell.h"
-#include "MKEnums.h"
+#import "MKCell.h"
+#import "MKEnums.h"
 
 @interface MKAutomat : NSObject {
     NSInteger x, y, lastId;

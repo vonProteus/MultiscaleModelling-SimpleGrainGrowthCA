@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "MKView.h"
+#import "MKView.h"
 
 @interface MKViewController : NSViewController <MKViewDelegate>
 @property (retain, nonatomic, readwrite) IBOutlet MKView* view;

@@ -7,7 +7,7 @@
 //
 
 #import "MKAutomat.h"
-#include <stdlib.h>
+#import <stdlib.h>
 
 @implementation MKAutomat
 
@@ -157,7 +157,20 @@
 {
     switch (self.boundaryType) {
     case periodicBoundaryConditions:
-        return [[ca objectAtIndex:(Y % y)] objectAtIndex:(X % x)];
+        if (Y >= y) {
+            Y -= y;
+        }
+        if (X >= x) {
+            X -= x;
+        }
+        if (Y < 0) {
+            Y += y;
+        }
+        if (X < 0) {
+            X += x;
+        }
+
+        return [[ca objectAtIndex:Y] objectAtIndex:X];
     case absorbingBoundaryConditions:
         if (X >= x || Y >= y || X < 0 || Y < 0) {
             return [[[MKCell alloc] init] getAllFrom:absorbingCell];
@@ -175,8 +188,21 @@
 {
     switch (self.boundaryType) {
     case periodicBoundaryConditions:
-        return [[caPrev objectAtIndex:Y % y] objectAtIndex:X % x];
-    case absorbingBoundaryConditions:
+        if (Y >= y) {
+            Y -= y;
+        }
+        if (X >= x) {
+            X -= x;
+        }
+        if (Y < 0) {
+            Y += y;
+        }
+        if (X < 0) {
+            X += x;
+        }
+
+        return [[caPrev objectAtIndex:Y] objectAtIndex:X];
+    case absorbingBoundaryConditions:ć
         if (X >= x || Y >= y || X < 0 || Y < 0) {
             return [[[MKCell alloc] init] getAllFrom:absorbingCell];
         } else {

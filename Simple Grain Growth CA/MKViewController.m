@@ -7,9 +7,10 @@
 //
 
 #import "MKViewController.h"
-#include "MKAutomat.h"
-#include "MKCell.h"
-#include <stdlib.h>
+#import "MKAutomat.h"
+#import "MKCell.h"
+#import "MKEnums.h"
+#import <stdlib.h>
 
 @interface MKViewController ()
 @property (retain, nonatomic, readwrite) MKAutomat* automat;
@@ -24,7 +25,7 @@
     self.view.delegate = self;
     self.automat = [[MKAutomat alloc] init];
 
-    self.automat.boundaryType = absorbingBoundaryConditions;
+    //    self.automat.boundaryType = absorbingBoundaryConditions;
 
     NSInteger numberOfGrainOnStart = 15;
     NSInteger numberOfDislocationOnStart = 5;
