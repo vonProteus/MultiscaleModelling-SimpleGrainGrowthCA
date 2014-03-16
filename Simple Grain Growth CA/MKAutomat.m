@@ -108,30 +108,6 @@
 
 - (NSSet*)getAllNeighborsForX:(NSInteger)X andY:(NSInteger)Y
 {
-    switch (self.boundaryType) {
-    case periodicBoundaryConditions:
-        return [self getAllNeighborsPeriodicBoundaryConditionsForX:X
-                                                              andY:Y];
-    case absorbingBoundaryConditions:
-        return [self getAllNeighborsAbsorbingBoundaryConditionsForX:X
-                                                               andY:Y];
-    default:
-        break;
-    }
-}
-
-- (MKCell*)getX:(NSInteger)X Y:(NSInteger)Y
-{
-    return [[ca objectAtIndex:Y] objectAtIndex:X];
-}
-
-- (MKCell*)getPrevX:(NSInteger)X Y:(NSInteger)Y
-{
-    return [[caPrev objectAtIndex:Y] objectAtIndex:X];
-}
-
-- (NSSet*)getAllNeighborsPeriodicBoundaryConditionsForX:(NSInteger)X andY:(NSInteger)Y
-{
     NSMutableSet* ansM = [NSMutableSet set];
 
     NSInteger XP = X + 1;
@@ -139,19 +115,6 @@
     NSInteger YP = Y + 1;
     NSInteger YM = Y - 1;
 
-    if (XP >= x) {
-        XP = 0;
-    }
-    if (YP >= y) {
-        YP = 0;
-    }
-    if (XM < 0) {
-        XM = x - 1;
-    }
-    if (YM < 0) {
-        YM = y - 1;
-    }
-
     switch (self.neighborsType) {
     case MoorNeighborhood:
         [ansM addObject:[self getPrevX:XM
@@ -190,33 +153,40 @@
     return ansM;
 }
 
-- (NSSet*)getAllNeighborsAbsorbingBoundaryConditionsForX:(NSInteger)X andY:(NSInteger)Y
+- (MKCell*)getX:(NSInteger)X Y:(NSInteger)Y
 {
-    NSMutableSet* ansM = [NSMutableSet set];
-
-    switch (self.neighborsType) {
-    case MoorNeighborhood:
-        [ansM addObject:[[caPrev objectAtIndex:Y - 1] objectAtIndex:X - 1]];
-        [ansM addObject:[[caPrev objectAtIndex:Y - 1] objectAtIndex:X]];
-        [ansM addObject:[[caPrev objectAtIndex:Y - 1] objectAtIndex:X + 1]];
-        [ansM addObject:[[caPrev objectAtIndex:Y] objectAtIndex:X - 1]];
-        [ansM addObject:[[caPrev objectAtIndex:Y] objectAtIndex:X + 1]];
-        [ansM addObject:[[caPrev objectAtIndex:Y + 1] objectAtIndex:X - 1]];
-        [ansM addObject:[[caPrev objectAtIndex:Y + 1] objectAtIndex:X]];
-        [ansM addObject:[[caPrev objectAtIndex:Y + 1] objectAtIndex:X + 1]];
-        break;
-    case VonNeumannNeighborhood:
-        [ansM addObject:[[caPrev objectAtIndex:Y - 1] objectAtIndex:X]];
-        [ansM addObject:[[caPrev objectAtIndex:Y] objectAtIndex:X - 1]];
-        [ansM addObject:[[caPrev objectAtIndex:Y] objectAtIndex:X + 1]];
-        [ansM addObject:[[caPrev objectAtIndex:Y + 1] objectAtIndex:X]];
-        break;
-
+    switch (self.boundaryType) {
+    case periodicBoundaryConditions:
+        return [[ca objectAtIndex:(Y % y)] objectAtIndex:(X % x)];
+    case absorbingBoundaryConditions:
+        if (X >= x || Y >= y || X < 0 || Y < 0) {
+            return [[[MKCell alloc] init] getAllFrom:absorbingCell];
+        } else {
+            return [[ca objectAtIndex:Y % y] objectAtIndex:X % x];
+        }
     default:
         break;
     }
 
-    return ansM;
+    return nil;
+}
+
+- (MKCell*)getPrevX:(NSInteger)X Y:(NSInteger)Y
+{
+    switch (self.boundaryType) {
+    case periodicBoundaryConditions:
+        return [[caPrev objectAtIndex:Y % y] objectAtIndex:X % x];
+    case absorbingBoundaryConditions:
+        if (X >= x || Y >= y || X < 0 || Y < 0) {
+            return [[[MKCell alloc] init] getAllFrom:absorbingCell];
+        } else {
+            return [[caPrev objectAtIndex:Y % y] objectAtIndex:X % x];
+        }
+    default:
+        break;
+    }
+
+    return nil;
 }
 
 - (NSInteger)addNewGrainAtX:(NSInteger)X Y:(NSInteger)Y

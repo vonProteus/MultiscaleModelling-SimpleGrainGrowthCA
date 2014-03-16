@@ -24,6 +24,8 @@
     self.view.delegate = self;
     self.automat = [[MKAutomat alloc] init];
 
+    self.automat.boundaryType = absorbingBoundaryConditions;
+
     NSInteger numberOfGrainOnStart = 15;
     NSInteger numberOfDislocationOnStart = 5;
     NSInteger maxROfDislocation = 10;

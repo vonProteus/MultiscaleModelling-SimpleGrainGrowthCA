@@ -18,11 +18,12 @@
     return self;
 }
 
-- (void)getAllFrom:(MKCell*)hear
+- (MKCell*)getAllFrom:(MKCell*)hear
 {
     self.grainId = hear.grainId;
     self.isLiving = hear.isLiving;
     self.isOnBorder = hear.isOnBorder;
+    return self;
 }
 
 @end

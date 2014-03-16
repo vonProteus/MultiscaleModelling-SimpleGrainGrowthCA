@@ -14,6 +14,6 @@
 @property (readwrite) BOOL isOnBorder, isLiving;
 
 - (id)init;
-- (void)getAllFrom:(MKCell*)hear;
+- (MKCell*)getAllFrom:(MKCell*)hear;
 
 @end
