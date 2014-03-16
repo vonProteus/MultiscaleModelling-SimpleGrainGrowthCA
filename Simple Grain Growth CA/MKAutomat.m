@@ -146,6 +146,58 @@
 
         break;
 
+    case Hex1:
+        [ansM addObject:[self getPrevX:XM
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:XM
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:Y]];
+        break;
+    case Hex2:
+        [ansM addObject:[self getPrevX:XM
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:XM
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:YP]];
+        break;
+
+    case HexRandom:
+        [ansM addObject:[self getPrevX:X
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XM
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:Y]];
+
+        NSInteger h1 = arc4random() % 4;
+        NSInteger h2 = arc4random() % 4;
+        while (h1 == h2) {
+            h2 = arc4random() % 4;
+        }
+
+        [ansM addObject:[self getPrevCorner:h1
+                                          X:X
+                                          Y:Y]];
+        [ansM addObject:[self getPrevCorner:h2
+                                          X:X
+                                          Y:Y]];
+
     default:
         break;
     }
@@ -182,6 +234,33 @@
     }
 
     return nil;
+}
+
+- (MKCell*)getPrevCorner:(NSInteger)Corner X:(NSInteger)X Y:(NSInteger)Y
+{
+    NSInteger XP = X + 1;
+    NSInteger XM = X - 1;
+    NSInteger YP = Y + 1;
+    NSInteger YM = Y - 1;
+
+    switch (Corner) {
+    case 0:
+        return [self getPrevX:XM
+                            Y:YM];
+    case 1:
+        return [self getPrevX:XM
+                            Y:YP];
+
+    case 2:
+        return [self getPrevX:XP
+                            Y:YM];
+    case 3:
+        return [self getPrevX:XP
+                            Y:YP];
+
+    default:
+        return nil;
+    }
 }
 
 - (MKCell*)getPrevX:(NSInteger)X Y:(NSInteger)Y

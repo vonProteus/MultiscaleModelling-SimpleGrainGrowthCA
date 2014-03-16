@@ -26,6 +26,7 @@
     self.automat = [[MKAutomat alloc] init];
 
     //    self.automat.boundaryType = absorbingBoundaryConditions;
+    self.automat.neighborsType = HexRandom;
 
     NSInteger numberOfGrainOnStart = 15;
     NSInteger numberOfDislocationOnStart = 5;
