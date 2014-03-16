@@ -25,9 +25,6 @@
     self.view.delegate = self;
     self.automat = [[MKAutomat alloc] init];
 
-    //    self.automat.boundaryType = absorbingBoundaryConditions;
-    self.automat.neighborsType = HexRandom;
-
     NSInteger numberOfGrainOnStart = 15;
     NSInteger numberOfDislocationOnStart = 5;
     NSInteger maxROfDislocation = 10;
@@ -92,9 +89,13 @@
 {
     self.status = addGrain;
 }
-- (IBAction)newDislocation:(id)sender
+- (IBAction)newDislocationCircle:(id)sender
 {
-    self.status = addDislocation;
+    self.status = addDislocationCircle;
+}
+- (IBAction)newDislocationSquare:(id)sender
+{
+    self.status = addDislocationSquare;
 }
 - (IBAction)cleam:(id)sender
 {
@@ -109,10 +110,15 @@
     //    DLog(@"%i %i", X, Y);
 
     switch (self.status) {
-    case addDislocation:
+    case addDislocationCircle:
         [self.automat addNewDislocationAtX:X
                                          Y:Y
-                                     WithR:1];
+                                     WithR:self.tfDislocationSize.intValue];
+        break;
+    case addDislocationSquare:
+        [self.automat addNewDislocationAtX:X
+                                         Y:Y
+                                     WithD:self.tfDislocationSize.intValue];
         break;
     case addGrain:
         [self.automat addNewGrainAtX:X
@@ -147,6 +153,43 @@
     case 2:
         DLog("absorbingBoundaryConditions");
         self.automat.boundaryType = absorbingBoundaryConditions;
+        break;
+
+    default:
+        break;
+    }
+}
+
+- (IBAction)neighborsTypeChange:(id)sender
+{
+    switch ([[sender selectedCell] tag]) {
+    case 1:
+        DLog("VonNeumannNeighborhood");
+        self.automat.neighborsType = VonNeumannNeighborhood;
+        break;
+    case 2:
+        DLog("MoorNeighborhood");
+        self.automat.neighborsType = MoorNeighborhood;
+        break;
+
+    case 3:
+        DLog("HexRandom");
+        self.automat.neighborsType = HexRandom;
+        break;
+
+    case 4:
+        DLog("PentaRandom");
+        self.automat.neighborsType = PentaRandom;
+        break;
+
+    case 5:
+        DLog("Hex1");
+        self.automat.neighborsType = Hex1;
+        break;
+
+    case 6:
+        DLog("Hex2");
+        self.automat.neighborsType = Hex2;
         break;
 
     default:

@@ -116,7 +116,7 @@
     NSInteger YM = Y - 1;
 
     switch (self.neighborsType) {
-    case MoorNeighborhood:
+    case MoorNeighborhood: {
         [ansM addObject:[self getPrevX:XM
                                      Y:YM]];
         [ansM addObject:[self getPrevX:XM
@@ -133,8 +133,8 @@
                                      Y:Y]];
         [ansM addObject:[self getPrevX:XP
                                      Y:YP]];
-        break;
-    case VonNeumannNeighborhood:
+    } break;
+    case VonNeumannNeighborhood: {
         [ansM addObject:[self getPrevX:X
                                      Y:YM]];
         [ansM addObject:[self getPrevX:X
@@ -143,39 +143,38 @@
                                      Y:Y]];
         [ansM addObject:[self getPrevX:XP
                                      Y:Y]];
+    } break;
 
-        break;
+    case Hex1: {
+        [ansM addObject:[self getPrevX:XM
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:XM
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:Y]];
+    } break;
+    case Hex2: {
+        [ansM addObject:[self getPrevX:XM
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:XM
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:YP]];
+    } break;
 
-    case Hex1:
-        [ansM addObject:[self getPrevX:XM
-                                     Y:Y]];
-        [ansM addObject:[self getPrevX:XM
-                                     Y:YP]];
-        [ansM addObject:[self getPrevX:X
-                                     Y:YM]];
-        [ansM addObject:[self getPrevX:X
-                                     Y:YP]];
-        [ansM addObject:[self getPrevX:XP
-                                     Y:YM]];
-        [ansM addObject:[self getPrevX:XP
-                                     Y:Y]];
-        break;
-    case Hex2:
-        [ansM addObject:[self getPrevX:XM
-                                     Y:YM]];
-        [ansM addObject:[self getPrevX:XM
-                                     Y:Y]];
-        [ansM addObject:[self getPrevX:X
-                                     Y:YM]];
-        [ansM addObject:[self getPrevX:X
-                                     Y:YP]];
-        [ansM addObject:[self getPrevX:XP
-                                     Y:Y]];
-        [ansM addObject:[self getPrevX:XP
-                                     Y:YP]];
-        break;
-
-    case HexRandom:
+    case HexRandom: {
         [ansM addObject:[self getPrevX:X
                                      Y:YM]];
         [ansM addObject:[self getPrevX:X
@@ -197,6 +196,24 @@
         [ansM addObject:[self getPrevCorner:h2
                                           X:X
                                           Y:Y]];
+    } break;
+
+    case PentaRandom: {
+        [ansM addObject:[self getPrevX:X
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:X
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XM
+                                     Y:Y]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:Y]];
+
+        NSInteger p = arc4random() % 4;
+
+        [ansM addObject:[self getPrevCorner:p
+                                          X:X
+                                          Y:Y]];
+    } break;
 
     default:
         break;

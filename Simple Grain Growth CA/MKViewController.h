@@ -12,16 +12,17 @@
 @interface MKViewController : NSViewController <MKViewDelegate>
 @property (retain, nonatomic, readwrite) IBOutlet MKView* view;
 
-@property (retain, nonatomic, readwrite) IBOutlet NSComboBox* cbNeighborsType;
-@property (retain, nonatomic, readwrite) IBOutlet NSMatrix* mxBoundaryType;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfInfo;
+@property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfDislocationSize;
 
 - (IBAction)andrzej:(id)sender;
 - (IBAction)andrzejToEnd:(id)sender;
 - (IBAction)newGrain:(id)sender;
-- (IBAction)newDislocation:(id)sender;
+- (IBAction)newDislocationCircle:(id)sender;
+- (IBAction)newDislocationSquare:(id)sender;
 - (IBAction)cleam:(id)sender;
 
 - (IBAction)boundaryTypeChange:(id)sender;
+- (IBAction)neighborsTypeChange:(id)sender;
 
 @end

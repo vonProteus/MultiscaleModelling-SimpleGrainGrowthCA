@@ -22,6 +22,7 @@ enum NeighborsTypes {
 
 enum ViewStatus {
     addGrain,
-    addDislocation,
+    addDislocationCircle,
+    addDislocationSquare,
     doNothingView,
 };
