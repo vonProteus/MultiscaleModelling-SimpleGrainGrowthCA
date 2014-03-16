@@ -202,7 +202,7 @@
         }
 
         return [[caPrev objectAtIndex:Y] objectAtIndex:X];
-    case absorbingBoundaryConditions:ć
+    case absorbingBoundaryConditions:
         if (X >= x || Y >= y || X < 0 || Y < 0) {
             return [[[MKCell alloc] init] getAllFrom:absorbingCell];
         } else {
