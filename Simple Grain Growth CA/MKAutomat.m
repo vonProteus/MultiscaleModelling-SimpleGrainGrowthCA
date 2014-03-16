@@ -15,8 +15,8 @@
 
 - (id)init
 {
-    self = [self initWithX:5
-                         Y:5];
+    self = [self initWithX:50
+                         Y:50];
     return self;
 }
 
@@ -47,6 +47,11 @@
     caPrev = [NSArray arrayWithArray:caPrevMutable];
 
     lastId = 0;
+    absorbingCell = [[MKCell alloc] init];
+    absorbingCell.grainId = -1;
+    absorbingCell.isLiving = YES;
+    absorbingCell.isOnBorder = YES;
+
     return self;
 }
 
@@ -57,7 +62,7 @@
         for (NSInteger b = 0; b < x; ++b) {
             MKCell* currentCell = [self getX:b
                                            Y:a];
-            if (currentCell.isLiving /*&& currentCell.isOnBorder == NO*/) {
+            if (currentCell.isLiving && currentCell.isOnBorder == NO) {
                 continue;
             }
             NSSet* neighbors = [self getAllNeighborsForX:b
@@ -74,16 +79,18 @@
                 }
             }
 
-            if (neighborsIds.count > 0) {
-                currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
-                currentCell.isLiving = YES;
-                currentCell.isOnBorder = isOnBorder;
-                ++changes;
+            if (currentCell.grainId != -1) {
+                if (neighborsIds.count > 0) {
+                    currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
+                    currentCell.isLiving = YES;
+                    currentCell.isOnBorder = isOnBorder;
+                    ++changes;
+                }
             }
         }
     }
 
-    [self allToLog];
+    //    [self allToLog];
 
     for (NSInteger a = 0; a < y; ++a) {
         for (NSInteger b = 0; b < x; ++b) {
@@ -222,7 +229,7 @@
     curentCell.isLiving = YES;
     curentCell.isOnBorder = YES;
 
-    [self allToLog];
+    //    [self allToLog];
 
     return self.lastId;
 }
@@ -238,9 +245,12 @@
                 if ((a - Y) * (a - Y) + (b - X) * (b - X) < R * R) {
                     MKCell* cellInR = [self getX:b
                                                Y:a];
+                    MKCell* cellPrevInR = [self getPrevX:b
+                                                       Y:a];
                     cellInR.grainId = -1;
                     cellInR.isLiving = YES;
-                    cellInR.isOnBorder = YES;
+                    cellInR.isOnBorder = NO;
+                    [cellPrevInR getAllFrom:cellPrevInR];
                 }
             }
         }
@@ -263,9 +273,12 @@
             for (NSInteger b = X - D; b < X + D; ++b) {
                 MKCell* cellInD = [self getX:b
                                            Y:a];
+                MKCell* cellPrevInD = [self getPrevX:b
+                                                   Y:a];
                 cellInD.grainId = -1;
                 cellInD.isLiving = YES;
-                cellInD.isOnBorder = YES;
+                cellInD.isOnBorder = NO;
+                [cellPrevInD getAllFrom:cellPrevInD];
             }
         }
         //        [self allToLog];

@@ -12,6 +12,10 @@
 @interface MKViewController : NSViewController <MKViewDelegate>
 @property (retain, nonatomic, readwrite) IBOutlet MKView* view;
 
+@property (retain, nonatomic, readwrite) IBOutlet NSComboBox* cbNeighborsType;
+@property (retain, nonatomic, readwrite) IBOutlet NSMatrix* mxBoundaryType;
+@property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfInfo;
+
 - (IBAction)andrzej:(id)sender;
 - (IBAction)andrzejToEnd:(id)sender;
 - (IBAction)newGrain:(id)sender;

@@ -19,6 +19,9 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <viewController id="aRu-yi-ybQ" customClass="MKViewController">
             <connections>
+                <outlet property="cbNeighborsType" destination="Ge3-2l-0L2" id="Wsb-nl-LXv"/>
+                <outlet property="mxBoundaryType" destination="elv-rE-CHJ" id="ZFF-rD-3yn"/>
+                <outlet property="tfInfo" destination="q5A-RF-0c6" id="7SM-4f-eWj"/>
                 <outlet property="view" destination="yZc-JU-eM7" id="T5B-U7-xiX"/>
             </connections>
         </viewController>
@@ -697,10 +700,10 @@
         <window title="Tools" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="iHm-ay-xKS" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="-1784" y="163" width="237" height="389"/>
+            <rect key="contentRect" x="-1784" y="163" width="332" height="389"/>
             <rect key="screenRect" x="-1920" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="icc-6Y-Q1J">
-                <rect key="frame" x="0.0" y="0.0" width="237" height="389"/>
+                <rect key="frame" x="0.0" y="0.0" width="332" height="389"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iW6-TU-5eo">
@@ -757,10 +760,10 @@
                         </comboBoxCell>
                     </comboBox>
                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elv-rE-CHJ">
-                        <rect key="frame" x="20" y="169" width="61" height="38"/>
+                        <rect key="frame" x="20" y="169" width="292" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        <size key="cellSize" width="58" height="18"/>
+                        <size key="cellSize" width="222" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="LdC-MU-vY3">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -768,11 +771,11 @@
                         </buttonCell>
                         <cells>
                             <column>
-                                <buttonCell type="radio" title="Radio" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="daP-ux-cw2">
+                                <buttonCell type="radio" title="Periodic Boundary Conditions" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="daP-ux-cw2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <buttonCell type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="Txw-pO-XYc">
+                                <buttonCell type="radio" title="Absorbing Boundary Conditions" imagePosition="left" alignment="left" inset="2" id="Txw-pO-XYc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -790,6 +793,15 @@
                             <action selector="cleam:" target="aRu-yi-ybQ" id="FTV-gl-koU"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5A-RF-0c6">
+                        <rect key="frame" x="20" y="20" width="294" height="116"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="4uH-7U-oUE">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>

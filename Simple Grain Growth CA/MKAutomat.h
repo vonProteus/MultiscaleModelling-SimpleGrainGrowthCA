@@ -16,6 +16,7 @@
     NSArray* caPrev;
     enum BoundaryTypes boundaryType;
     enum NeighborsTypes neighborsType;
+    MKCell* absorbingCell;
 }
 
 @property (readonly) NSInteger x, y, lastId;

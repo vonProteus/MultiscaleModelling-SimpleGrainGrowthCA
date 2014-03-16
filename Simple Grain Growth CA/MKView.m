@@ -30,7 +30,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    DLog("draw");
+    //    DLog("draw");
     [super drawRect:dirtyRect];
 
     //    if ([self inLiveResize]) {
@@ -80,7 +80,7 @@
 
     [_delegate mouseClickAt:point];
 
-    DLog(@"%f %f", point.x, point.y);
+    //    DLog(@"%f %f", point.x, point.y);
 }
 
 - (void)dealloc
