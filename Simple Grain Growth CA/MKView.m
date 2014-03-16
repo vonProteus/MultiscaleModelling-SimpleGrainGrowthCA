@@ -17,6 +17,11 @@
         // Initialization code here.
         DLog("init");
         colors = [NSMutableArray array];
+        [colors removeAllObjects];
+        [self addColorR:0
+                      G:0
+                      B:0
+                      A:0];
         toDraw = [NSMutableArray array];
         [toDraw addObject:[NSMutableArray array]];
     }
@@ -44,21 +49,24 @@
     obszar.size.height = okno.size.height / ((NSArray*)[toDraw objectAtIndex:0]).count;
 
     for (NSInteger a = 0; a < toDraw.count; ++a) {
-        NSArray* line = [toDraw objectAtIndex:0];
+        NSArray* line = [toDraw objectAtIndex:a];
         for (NSInteger b = 0; b < line.count; ++b) {
-            obszar.origin.x = a * obszar.size.width;
-            obszar.origin.y = b * obszar.size.height;
+            NSColor* cellColor = [line objectAtIndex:b];
+            if (cellColor != nil) {
+                obszar.origin.x = b * obszar.size.width;
+                obszar.origin.y = a * obszar.size.height;
 
-            //[[NSColor blackColor] setStroke];
-            [[line objectAtIndex:b] setFill];
+                //[[NSColor blackColor] setStroke];
+                [cellColor setFill];
 
-            //[[NSColor redColor] setFill];
+                //                [[NSColor redColor] setFill];
 
-            NSBezierPath* circlePath = [NSBezierPath bezierPath];
-            //[circlePath appendBezierPathWithRect: obszar];
-            [circlePath appendBezierPathWithOvalInRect:obszar];
-            //[circlePath stroke];
-            [circlePath fill];
+                NSBezierPath* circlePath = [NSBezierPath bezierPath];
+                //[circlePath appendBezierPathWithRect: obszar];
+                [circlePath appendBezierPathWithOvalInRect:obszar];
+                //[circlePath stroke];
+                [circlePath fill];
+            }
         }
     }
 
@@ -82,35 +90,35 @@
 
 - (void)showAutomat:(MKAutomat*)automat
 {
-    if (automat.lastId + 2 >= colors.count) {
-        while (automat.lastId + 2 > colors.count) {
-            [self addColor];
-        }
-    } else {
-        [colors removeAllObjects];
-        [self addColorR:1
-                      G:1
-                      B:1
-                      A:1];
-        [self addColorR:1
-                      G:1
-                      B:1
-                      A:0];
-        [self showAutomat:automat];
-        return;
+
+    while (automat.lastId >= colors.count) {
+        [self addColor];
     }
+
     [toDraw removeAllObjects];
+
+    NSColor* dislocationColor = [NSColor blackColor];
 
     for (NSInteger Y = 0; Y < automat.y; ++Y) {
         NSMutableArray* line = [NSMutableArray array];
         for (NSInteger X = 0; X < automat.x; ++X) {
-            [line addObject:[colors objectAtIndex:[automat getX:X
-                                                              Y:Y].grainId + 1]];
+
+            NSInteger grainId = [automat getX:X
+                                            Y:Y].grainId;
+
+            if (grainId == -1) {
+                [line addObject:dislocationColor];
+            } else if (grainId >= 0) {
+                [line addObject:[colors objectAtIndex:grainId]];
+            }
+
+            //            DLog("%li %li %li", X, Y, [automat getX:X
+            //                                                  Y:Y].grainId);
         }
         [toDraw addObject:line];
     }
 
-    [self needsDisplay];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)addColor

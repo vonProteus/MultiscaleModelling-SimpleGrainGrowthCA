@@ -26,7 +26,6 @@
 - (id)initWithX:(NSInteger)X Y:(NSInteger)Y;
 
 - (NSInteger)andrzej;
-- (NSSet*)getAllNeighborsForX:(NSInteger)X andY:(NSInteger)Y;
 - (MKCell*)getX:(NSInteger)X Y:(NSInteger)Y;
 
 - (NSInteger)addNewGrainAtX:(NSInteger)X Y:(NSInteger)Y;

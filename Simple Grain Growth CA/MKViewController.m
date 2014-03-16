@@ -56,6 +56,7 @@
 - (IBAction)cleam:(id)sender
 {
     self.automat = [[MKAutomat alloc] init];
+    [self.view showAutomat:self.automat];
 }
 
 - (void)mouseClickAt:(NSPoint)p
@@ -68,7 +69,7 @@
     case addDislocation:
         [self.automat addNewDislocationAtX:X
                                          Y:Y
-                                     WithR:10];
+                                     WithR:1];
         break;
     case addGrain:
         [self.automat addNewGrainAtX:X
@@ -77,6 +78,8 @@
     default:
         break;
     }
+
+    [self.view showAutomat:self.automat];
 
     self.status = doNothingView;
 }

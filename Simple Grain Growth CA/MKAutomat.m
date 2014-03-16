@@ -15,8 +15,8 @@
 
 - (id)init
 {
-    self = [self initWithX:100
-                         Y:100];
+    self = [self initWithX:5
+                         Y:5];
     return self;
 }
 
@@ -35,7 +35,17 @@
     }
 
     ca = [NSArray arrayWithArray:caMutable];
-    caPrev = [ca copy];
+
+    NSMutableArray* caPrevMutable = [NSMutableArray array];
+    for (NSInteger a = 0; a < y; ++a) {
+        [caPrevMutable addObject:[[NSMutableArray alloc] init]];
+        for (NSInteger b = 0; b < x; ++b) {
+            [[caPrevMutable objectAtIndex:a] addObject:[[MKCell alloc] init]];
+        }
+    }
+
+    caPrev = [NSArray arrayWithArray:caPrevMutable];
+
     lastId = 0;
     return self;
 }
@@ -45,8 +55,9 @@
     NSInteger changes = 0;
     for (NSInteger a = 0; a < y; ++a) {
         for (NSInteger b = 0; b < x; ++b) {
-            MKCell* currentCell = (MKCell*)[[ca objectAtIndex:a] objectAtIndex:b];
-            if (currentCell.isLiving && currentCell.isOnBorder == NO) {
+            MKCell* currentCell = [self getX:b
+                                           Y:a];
+            if (currentCell.isLiving /*&& currentCell.isOnBorder == NO*/) {
                 continue;
             }
             NSSet* neighbors = [self getAllNeighborsForX:b
@@ -72,7 +83,19 @@
         }
     }
 
-    caPrev = [ca copy];
+    [self allToLog];
+
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* currentCell = [self getX:b
+                                           Y:a];
+            MKCell* prevCell = [self getPrevX:b
+                                            Y:a];
+            [prevCell getAllFrom:currentCell];
+        }
+    }
+
+    DLog("number of changes %li", changes);
     return changes;
 }
 
@@ -191,52 +214,92 @@
 
 - (NSInteger)addNewGrainAtX:(NSInteger)X Y:(NSInteger)Y
 {
-    MKCell* curentCell = [[ca objectAtIndex:Y] objectAtIndex:X];
+    MKCell* curentCell = [self getX:X
+                                  Y:Y];
 
     ++lastId;
     curentCell.grainId = self.lastId;
+    curentCell.isLiving = YES;
+    curentCell.isOnBorder = YES;
+
+    [self allToLog];
 
     return self.lastId;
 }
 
 - (bool)addNewDislocationAtX:(NSInteger)X Y:(NSInteger)Y WithR:(NSInteger)R
 {
-    MKCell* curentCell = [[ca objectAtIndex:Y] objectAtIndex:X];
+    MKCell* curentCell = [self getX:X
+                                  Y:Y];
 
     if (curentCell.grainId == 0 || curentCell.isOnBorder) {
         for (NSInteger a = Y - R; a < Y + R; ++a) {
             for (NSInteger b = X - R; b < X + R; ++b) {
                 if ((a - Y) * (a - Y) + (b - X) * (b - X) < R * R) {
-                    MKCell* cellInR = [[ca objectAtIndex:Y] objectAtIndex:X];
+                    MKCell* cellInR = [self getX:b
+                                               Y:a];
                     cellInR.grainId = -1;
                     cellInR.isLiving = YES;
-                    cellInR.isLiving = YES;
+                    cellInR.isOnBorder = YES;
                 }
             }
         }
+        //        [self allToLog];
+
         return YES;
     }
+    //    [self allToLog];
 
     return NO;
 }
 
 - (bool)addNewDislocationAtX:(NSInteger)X Y:(NSInteger)Y WithD:(NSInteger)D
 {
-    MKCell* curentCell = [[ca objectAtIndex:Y] objectAtIndex:X];
+    MKCell* curentCell = [self getX:X
+                                  Y:Y];
 
     if (curentCell.grainId == 0 || curentCell.isOnBorder) {
         for (NSInteger a = Y - D; a < Y + D; ++a) {
             for (NSInteger b = X - D; b < X + D; ++b) {
-                MKCell* cellInD = [[ca objectAtIndex:Y] objectAtIndex:X];
+                MKCell* cellInD = [self getX:b
+                                           Y:a];
                 cellInD.grainId = -1;
                 cellInD.isLiving = YES;
-                cellInD.isLiving = YES;
+                cellInD.isOnBorder = YES;
             }
         }
+        //        [self allToLog];
         return YES;
     }
+    //    [self allToLog];
 
     return NO;
+}
+
+- (void)allToLog
+{
+    NSMutableString* s = [NSMutableString stringWithFormat:@"\n"];
+
+    [s appendString:@"CA\n"];
+
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            [s appendFormat:@"%li ", [self getX:b
+                                              Y:a].grainId];
+        }
+        [s appendString:@"\n"];
+    }
+
+    [s appendString:@"CAPrev\n"];
+
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            [s appendFormat:@"%li ", [self getPrevX:b
+                                                  Y:a].grainId];
+        }
+        [s appendString:@"\n"];
+    }
+    DLog("%@", s);
 }
 
 @end
