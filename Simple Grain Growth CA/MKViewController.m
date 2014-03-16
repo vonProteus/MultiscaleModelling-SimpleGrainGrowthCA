@@ -137,4 +137,20 @@
     self.status = doNothingView;
 }
 
+- (IBAction)boundaryTypeChange:(id)sender
+{
+    switch ([[sender selectedCell] tag]) {
+    case 1:
+        DLog("periodicBoundaryConditions");
+        self.automat.boundaryType = periodicBoundaryConditions;
+        break;
+    case 2:
+        DLog("absorbingBoundaryConditions");
+        self.automat.boundaryType = absorbingBoundaryConditions;
+        break;
+
+    default:
+        break;
+    }
+}
 @end

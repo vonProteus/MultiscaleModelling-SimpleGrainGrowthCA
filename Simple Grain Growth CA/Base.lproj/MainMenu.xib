@@ -20,7 +20,7 @@
         <viewController id="aRu-yi-ybQ" customClass="MKViewController">
             <connections>
                 <outlet property="cbNeighborsType" destination="Ge3-2l-0L2" id="Wsb-nl-LXv"/>
-                <outlet property="mxBoundaryType" destination="elv-rE-CHJ" id="ZFF-rD-3yn"/>
+                <outlet property="mxBoundaryType" destination="elv-rE-CHJ" id="l2Y-Fn-xXq"/>
                 <outlet property="tfInfo" destination="q5A-RF-0c6" id="7SM-4f-eWj"/>
                 <outlet property="view" destination="yZc-JU-eM7" id="T5B-U7-xiX"/>
             </connections>
@@ -753,7 +753,7 @@
                     <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ge3-2l-0L2">
                         <rect key="frame" x="21" y="211" width="131" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Bv4-bg-Vca">
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="Bv4-bg-Vca">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -775,12 +775,15 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <buttonCell type="radio" title="Absorbing Boundary Conditions" imagePosition="left" alignment="left" inset="2" id="Txw-pO-XYc">
+                                <buttonCell type="radio" title="Absorbing Boundary Conditions" imagePosition="left" alignment="left" tag="2" inset="2" id="Txw-pO-XYc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </column>
                         </cells>
+                        <connections>
+                            <action selector="boundaryTypeChange:" target="aRu-yi-ybQ" id="nKo-8q-IuR"/>
+                        </connections>
                     </matrix>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNQ-qC-fVe">
                         <rect key="frame" x="14" y="137" width="76" height="32"/>

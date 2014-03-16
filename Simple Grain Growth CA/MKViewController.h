@@ -22,4 +22,6 @@
 - (IBAction)newDislocation:(id)sender;
 - (IBAction)cleam:(id)sender;
 
+- (IBAction)boundaryTypeChange:(id)sender;
+
 @end
