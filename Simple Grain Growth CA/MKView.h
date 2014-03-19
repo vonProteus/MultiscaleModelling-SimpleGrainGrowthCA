@@ -24,4 +24,6 @@
 
 - (void)showAutomat:(MKAutomat*)automat;
 
+- (void)mouseWasClickedAtCalback:(void (^)(NSPoint))calback;
+
 @end

@@ -138,4 +138,12 @@
                                              blue:B / 255.0
                                             alpha:A]];
 }
+
+- (void)mouseWasClickedAtCalback:(void (^)(NSPoint))calback
+{
+    NSPoint p = NSMakePoint(0, 0);
+    NSMutableArray* arr = [NSMutableArray array];
+
+    calback(p);
+}
 @end
