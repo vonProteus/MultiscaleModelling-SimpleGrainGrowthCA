@@ -17,7 +17,7 @@ enum NeighborsTypes {
     HexRandom,
     PentaRandom,
     Hex1,
-    Hex2
+    Hex2,
 };
 
 enum ViewStatus {

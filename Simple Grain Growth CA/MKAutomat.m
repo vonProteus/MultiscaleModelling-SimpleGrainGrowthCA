@@ -30,6 +30,9 @@
     for (NSInteger a = 0; a < y; ++a) {
         [caMutable addObject:[[NSMutableArray alloc] init]];
         for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [[MKCell alloc] init];
+            cell.coordinateX = b;
+            cell.coordinateY = a;
             [[caMutable objectAtIndex:a] addObject:[[MKCell alloc] init]];
         }
     }

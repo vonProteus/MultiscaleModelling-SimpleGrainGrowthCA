@@ -12,6 +12,7 @@
 
 @property (readwrite) NSInteger grainId;
 @property (readwrite) BOOL isOnBorder, isLiving;
+@property (readwrite) NSInteger coordinateX, coordinateY;
 
 - (id)init;
 - (MKCell*)getAllFrom:(MKCell*)hear;
