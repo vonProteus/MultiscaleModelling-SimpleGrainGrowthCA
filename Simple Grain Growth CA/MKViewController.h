@@ -20,6 +20,7 @@
 - (IBAction)newGrain:(id)sender;
 - (IBAction)newDislocationCircle:(id)sender;
 - (IBAction)newDislocationSquare:(id)sender;
+- (IBAction)newRandomDislocation:(id)sender;
 - (IBAction)cleam:(id)sender;
 
 - (IBAction)boundaryTypeChange:(id)sender;

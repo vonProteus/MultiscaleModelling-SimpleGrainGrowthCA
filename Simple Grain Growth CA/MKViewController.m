@@ -109,6 +109,27 @@
     [self.view showAutomat:self.automat];
 }
 
+- (IBAction)newRandomDislocation:(id)sender
+{
+    bool added = NO;
+
+    while (!added) {
+        NSInteger X = arc4random() % self.automat.x;
+        NSInteger Y = arc4random() % self.automat.y;
+        if (arc4random() % 2 == 0) {
+            added = [self.automat addNewDislocationAtX:X
+                                                     Y:Y
+                                                 WithR:self.tfDislocationSize.intValue];
+        } else {
+            added = [self.automat addNewDislocationAtX:X
+                                                     Y:Y
+                                                 WithD:self.tfDislocationSize.intValue];
+        }
+    }
+
+    [self.view showAutomat:self.automat];
+}
+
 - (void)mouseClickAt:(NSPoint)p
 {
     NSInteger X = (p.x / self.view.bounds.size.width) * self.automat.x;
