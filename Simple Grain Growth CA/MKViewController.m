@@ -24,11 +24,17 @@
     DLog("start");
     self.view.delegate = self;
     self.automat = [[MKAutomat alloc] init];
+    self.automat.transitionRules = Rules1_4;
 
     NSInteger numberOfGrainOnStart = 15;
     NSInteger numberOfDislocationOnStart = 5;
     NSInteger maxROfDislocation = 10;
     NSInteger maxDOfDislocation = 10;
+
+//    numberOfGrainOnStart = 2;
+//    numberOfDislocationOnStart = 0;
+//    maxROfDislocation = 10;
+//    maxDOfDislocation = 10;
 
     NSInteger X = 0;
     NSInteger Y = 0;

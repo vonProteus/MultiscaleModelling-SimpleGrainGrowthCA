@@ -7,16 +7,17 @@
 //
 
 #import "MKAutomat.h"
+#import "MKAns.h"
 #import <stdlib.h>
 
 @implementation MKAutomat
 
-@synthesize x, y, boundaryType, neighborsType, lastId;
+@synthesize x, y, boundaryType, neighborsType, lastId, transitionRules;
 
 - (id)init
 {
-    self = [self initWithX:50
-                         Y:50];
+    self = [self initWithX:150
+                         Y:150];
     return self;
 }
 
@@ -25,6 +26,8 @@
     x = X;
     y = Y;
     boundaryType = periodicBoundaryConditions;
+    transitionRules = Rules1;
+    neighborsType = MoorNeighborhood;
     NSMutableArray* caMutable = [NSMutableArray array];
 
     for (NSInteger a = 0; a < y; ++a) {
@@ -33,7 +36,7 @@
             MKCell* cell = [[MKCell alloc] init];
             cell.coordinateX = b;
             cell.coordinateY = a;
-            [[caMutable objectAtIndex:a] addObject:[[MKCell alloc] init]];
+            [[caMutable objectAtIndex:a] addObject:cell];
         }
     }
 
@@ -55,6 +58,16 @@
     absorbingCell.isLiving = YES;
     absorbingCell.isOnBorder = YES;
 
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* currentCell = [self getX:b
+                                           Y:a];
+            MKCell* prevCell = [self getPrevX:b
+                                            Y:a];
+            [prevCell getAllFrom:currentCell];
+        }
+    }
+
     return self;
 }
 
@@ -65,30 +78,53 @@
         for (NSInteger b = 0; b < x; ++b) {
             MKCell* currentCell = [self getX:b
                                            Y:a];
-            if (currentCell.isLiving && currentCell.isOnBorder == NO) {
-                continue;
-            }
-            NSSet* neighbors = [self getAllNeighborsForX:b
-                                                    andY:a];
 
-            NSMutableArray* neighborsIds = [NSMutableArray array];
-            bool isOnBorder = NO;
-            for (MKCell* neighbor in neighbors) {
-                if (neighbor.grainId > 0) {
-                    [neighborsIds addObject:[NSNumber numberWithInteger:neighbor.grainId]];
+            switch (transitionRules) {
+            case Rules1: {
+                if (currentCell.isLiving && currentCell.isOnBorder == NO) {
+                    continue;
                 }
-                if (neighbor.grainId != currentCell.grainId) {
-                    isOnBorder = YES;
-                }
-            }
+                NSSet* neighbors = [self getAllNeighborsForX:b
+                                                        andY:a];
 
-            if (currentCell.grainId != -1) {
-                if (neighborsIds.count > 0) {
-                    currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
-                    currentCell.isLiving = YES;
-                    currentCell.isOnBorder = isOnBorder;
-                    ++changes;
+                NSMutableArray* neighborsIds = [NSMutableArray array];
+                bool isOnBorder = NO;
+                for (MKCell* neighbor in neighbors) {
+                    if (neighbor.grainId > 0) {
+                        [neighborsIds addObject:[NSNumber numberWithInteger:neighbor.grainId]];
+                    }
+                    if (neighbor.grainId != currentCell.grainId) {
+                        isOnBorder = YES;
+                    }
                 }
+
+                if (currentCell.grainId != -1) {
+                    if (neighborsIds.count > 0) {
+                        currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
+                        currentCell.isLiving = YES;
+                        currentCell.isOnBorder = isOnBorder;
+                        ++changes;
+                    }
+                }
+            } break;
+
+            case Rules1_4: {
+                if (currentCell.grainId != -1 && currentCell.isOnBorder == YES) {
+                    if ([self rule1On:currentCell]) {
+                        ++changes;
+                    } else if ([self rule2On:currentCell]) {
+                        ++changes;
+                    } else if ([self rule3On:currentCell]) {
+                        ++changes;
+                    } else if ([self rule4On:currentCell]) {
+                        ++changes;
+                    }
+                }
+
+            } break;
+
+            default:
+                break;
             }
         }
     }
@@ -102,6 +138,14 @@
             MKCell* prevCell = [self getPrevX:b
                                             Y:a];
             [prevCell getAllFrom:currentCell];
+        }
+    }
+
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* currentCell = [self getX:b
+                                           Y:a];
+            [self borderUpdate:currentCell];
         }
     }
 
@@ -216,6 +260,16 @@
         [ansM addObject:[self getPrevCorner:p
                                           X:X
                                           Y:Y]];
+    } break;
+    case FurtherMoorNeighborhood: {
+        [ansM addObject:[self getPrevX:XM
+                                     Y:YM]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XM
+                                     Y:YP]];
+        [ansM addObject:[self getPrevX:XP
+                                     Y:YM]];
     } break;
 
     default:
@@ -408,6 +462,115 @@
         [s appendString:@"\n"];
     }
     DLog("%@", s);
+}
+
+- (BOOL)genericRuleForNeighbors:(enum NeighborsTypes)neighborhood minimumOfNeighborers:(NSInteger)min onCell:(MKCell*)currentCell
+{
+    neighborsType = neighborhood;
+    NSSet* neighbors = [self getAllNeighborsForX:currentCell.coordinateX
+                                            andY:currentCell.coordinateY];
+    NSArray* count = [self getStatsFor:neighbors];
+
+    MKAns* bestAns = nil;
+    NSInteger max = 0;
+
+    for (MKAns* ans in count) {
+        if (ans.greinId > 0) {
+            if (max < ans.count) {
+                bestAns = ans;
+            }
+        }
+    }
+
+    if (bestAns != nil) {
+        if (bestAns.count >= min) {
+            currentCell.grainId = bestAns.greinId;
+            currentCell.isLiving = YES;
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)rule1On:(MKCell*)currentCell
+{
+    return [self genericRuleForNeighbors:MoorNeighborhood
+                    minimumOfNeighborers:5
+                                  onCell:currentCell];
+}
+
+- (BOOL)rule2On:(MKCell*)currentCell
+{
+    return [self genericRuleForNeighbors:VonNeumannNeighborhood
+                    minimumOfNeighborers:3
+                                  onCell:currentCell];
+}
+
+- (BOOL)rule3On:(MKCell*)currentCell
+{
+    return [self genericRuleForNeighbors:FurtherMoorNeighborhood
+                    minimumOfNeighborers:3
+                                  onCell:currentCell];
+}
+
+- (BOOL)rule4On:(MKCell*)currentCell
+{
+    neighborsType = MoorNeighborhood;
+    NSSet* neighbors = [self getAllNeighborsForX:currentCell.coordinateX
+                                            andY:currentCell.coordinateY];
+
+    NSMutableArray* neighborsIds = [NSMutableArray array];
+    for (MKCell* neighbor in neighbors) {
+        if (neighbor.grainId > 0) {
+            [neighborsIds addObject:[NSNumber numberWithInteger:neighbor.grainId]];
+        }
+    }
+
+    if (neighborsIds.count > 0) {
+        currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
+        currentCell.isLiving = YES;
+        return YES;
+    }
+    return NO;
+}
+
+- (void)borderUpdate:(MKCell*)currentCell
+{
+    neighborsType = MoorNeighborhood;
+    NSSet* neighbors = [self getAllNeighborsForX:currentCell.coordinateX
+                                            andY:currentCell.coordinateY];
+    currentCell.isOnBorder = NO;
+
+    for (MKCell* neighbor in neighbors) {
+        if (currentCell.grainId != neighbor.grainId) {
+            currentCell.isOnBorder = YES;
+            break;
+        }
+    }
+}
+
+- (NSArray*)getStatsFor:(NSSet*)neighbors
+{
+    NSMutableArray* anss = [NSMutableArray array];
+
+    for (MKCell* cell in neighbors) {
+        BOOL ok = NO;
+        for (MKAns* ans in anss) {
+            if (ans.greinId == cell.grainId) {
+                ++ans.count;
+                ok = YES;
+                break;
+            }
+        }
+        if (!ok) {
+            MKAns* ans = [[MKAns alloc] init];
+            ans.greinId = cell.grainId;
+            ans.count = 1;
+            [anss addObject:ans];
+        }
+    }
+
+    return anss;
 }
 
 @end

@@ -18,6 +18,7 @@ enum NeighborsTypes {
     PentaRandom,
     Hex1,
     Hex2,
+    FurtherMoorNeighborhood,
 };
 
 enum ViewStatus {
@@ -25,4 +26,9 @@ enum ViewStatus {
     addDislocationCircle,
     addDislocationSquare,
     doNothingView,
+};
+
+enum TransitionRules {
+    Rules1,
+    Rules1_4,
 };

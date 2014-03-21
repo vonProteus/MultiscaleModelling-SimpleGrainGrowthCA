@@ -16,12 +16,14 @@
     NSArray* caPrev;
     enum BoundaryTypes boundaryType;
     enum NeighborsTypes neighborsType;
+    enum TransitionRules transitionRules;
     MKCell* absorbingCell;
 }
 
 @property (readonly) NSInteger x, y, lastId;
 @property (readwrite) enum BoundaryTypes boundaryType;
 @property (readwrite) enum NeighborsTypes neighborsType;
+@property (readwrite) enum TransitionRules transitionRules;
 
 - (id)init;
 - (id)initWithX:(NSInteger)X Y:(NSInteger)Y;

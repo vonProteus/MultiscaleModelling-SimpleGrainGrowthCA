@@ -18,6 +18,7 @@
 		705BC4CD18D4AFCB00255AD2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4AC18D4AFCA00255AD2 /* Cocoa.framework */; };
 		705BC4E418D4B0B800255AD2 /* MKCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4E318D4B0B800255AD2 /* MKCell.m */; };
 		705BC4E718D4B0CC00255AD2 /* MKAutomat.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4E618D4B0CC00255AD2 /* MKAutomat.m */; };
+		7098BB7B18DCD02B005C608F /* MKAns.m in Sources */ = {isa = PBXBuildFile; fileRef = 7098BB7A18DCD02B005C608F /* MKAns.m */; };
 		70F2C22418D4CD8800CB5724 /* MKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F2C22318D4CD8800CB5724 /* MKViewController.m */; };
 		70F2C22718D4D42600CB5724 /* MKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F2C22618D4D42600CB5724 /* MKView.m */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,8 @@
 		705BC4E318D4B0B800255AD2 /* MKCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCell.m; sourceTree = "<group>"; };
 		705BC4E518D4B0CC00255AD2 /* MKAutomat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAutomat.h; sourceTree = "<group>"; };
 		705BC4E618D4B0CC00255AD2 /* MKAutomat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAutomat.m; sourceTree = "<group>"; };
+		7098BB7918DCD02B005C608F /* MKAns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAns.h; sourceTree = "<group>"; };
+		7098BB7A18DCD02B005C608F /* MKAns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAns.m; sourceTree = "<group>"; };
 		70F2C22018D4B92F00CB5724 /* MKEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnums.h; sourceTree = "<group>"; };
 		70F2C22218D4CD8800CB5724 /* MKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewController.h; sourceTree = "<group>"; };
 		70F2C22318D4CD8800CB5724 /* MKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKViewController.m; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				705BC4E318D4B0B800255AD2 /* MKCell.m */,
 				705BC4E518D4B0CC00255AD2 /* MKAutomat.h */,
 				705BC4E618D4B0CC00255AD2 /* MKAutomat.m */,
+				7098BB7918DCD02B005C608F /* MKAns.h */,
+				7098BB7A18DCD02B005C608F /* MKAns.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				70F2C22418D4CD8800CB5724 /* MKViewController.m in Sources */,
 				705BC4C018D4AFCA00255AD2 /* MKAppDelegate.m in Sources */,
 				70F2C22718D4D42600CB5724 /* MKView.m in Sources */,
+				7098BB7B18DCD02B005C608F /* MKAns.m in Sources */,
 				705BC4E718D4B0CC00255AD2 /* MKAutomat.m in Sources */,
 				705BC4B918D4AFCA00255AD2 /* main.m in Sources */,
 				705BC4E418D4B0B800255AD2 /* MKCell.m in Sources */,

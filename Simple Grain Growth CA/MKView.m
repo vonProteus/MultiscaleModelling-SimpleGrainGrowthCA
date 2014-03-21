@@ -55,7 +55,8 @@
             if (cellColor != nil) {
                 obszar.origin.x = b * obszar.size.width;
                 obszar.origin.y = a * obszar.size.height;
-
+                obszar.size.width++;
+                obszar.size.height++;
                 //[[NSColor blackColor] setStroke];
                 [cellColor setFill];
 
@@ -63,9 +64,15 @@
 
                 NSBezierPath* circlePath = [NSBezierPath bezierPath];
                 //[circlePath appendBezierPathWithRect: obszar];
-                [circlePath appendBezierPathWithOvalInRect:obszar];
+                if (obszar.size.width < 20) {
+                    [circlePath appendBezierPathWithRect:obszar];
+                } else {
+                    [circlePath appendBezierPathWithOvalInRect:obszar];
+                }
                 //[circlePath stroke];
                 [circlePath fill];
+                obszar.size.width--;
+                obszar.size.height--;
             }
         }
     }
