@@ -24,5 +24,6 @@
 
 - (IBAction)boundaryTypeChange:(id)sender;
 - (IBAction)neighborsTypeChange:(id)sender;
+- (IBAction)ruleTypeChange:(id)sender;
 
 @end

@@ -31,10 +31,10 @@
     NSInteger maxROfDislocation = 10;
     NSInteger maxDOfDislocation = 10;
 
-//    numberOfGrainOnStart = 2;
-//    numberOfDislocationOnStart = 0;
-//    maxROfDislocation = 10;
-//    maxDOfDislocation = 10;
+    //    numberOfGrainOnStart = 2;
+    //    numberOfDislocationOnStart = 0;
+    //    maxROfDislocation = 10;
+    //    maxDOfDislocation = 10;
 
     NSInteger X = 0;
     NSInteger Y = 0;
@@ -196,6 +196,28 @@
     case 6:
         DLog("Hex2");
         self.automat.neighborsType = Hex2;
+        break;
+
+    case 7:
+        DLog("FurtherMoorNeighborhood");
+        self.automat.neighborsType = FurtherMoorNeighborhood;
+        break;
+
+    default:
+        break;
+    }
+}
+
+- (IBAction)ruleTypeChange:(id)sender
+{
+    switch ([[sender selectedCell] tag]) {
+    case 1:
+        DLog("Rules1");
+        self.automat.transitionRules = Rules1;
+        break;
+    case 2:
+        DLog("Rules1_4");
+        self.automat.transitionRules = Rules1_4;
         break;
 
     default:
