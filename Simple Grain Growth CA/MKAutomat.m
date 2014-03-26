@@ -283,12 +283,17 @@
         break;
     }
 
-//    
-//    for (MKCell* c in ansM) {
-//        if (c.willGrow == NO) {
-//            [ansM removeObject:c];
-//        }
-//    }
+    NSMutableSet* ansToRemove = [NSMutableSet set];
+    for (MKCell* c in ansM) {
+        if (c.willGrow == NO) {
+            [ansToRemove addObject:c];
+        }
+    }
+
+    for (MKCell* c in ansToRemove) {
+        [ansM removeObject:c];
+    }
+
     return ansM;
 }
 
