@@ -26,6 +26,7 @@ enum ViewStatus {
     addDislocationCircle,
     addDislocationSquare,
     doNothingView,
+    addToSave,
 };
 
 enum TransitionRules {

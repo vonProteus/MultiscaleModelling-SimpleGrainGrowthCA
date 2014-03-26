@@ -79,58 +79,68 @@
             MKCell* currentCell = [self getX:b
                                            Y:a];
 
-            switch (transitionRules) {
-            case Rules1: {
-                if (currentCell.isLiving && currentCell.isOnBorder == NO) {
-                    continue;
-                }
-                NSSet* neighbors = [self getAllNeighborsForX:b
-                                                        andY:a];
-
-                NSMutableArray* neighborsIds = [NSMutableArray array];
-                bool isOnBorder = NO;
-                for (MKCell* neighbor in neighbors) {
-                    if (neighbor.grainId > 0) {
-                        [neighborsIds addObject:[NSNumber numberWithInteger:neighbor.grainId]];
+            if (currentCell.willGrow) {
+                switch (transitionRules) {
+                case Rules1: {
+                    if (currentCell.isLiving && currentCell.isOnBorder == NO) {
+                        continue;
                     }
-                    if (neighbor.grainId != currentCell.grainId) {
-                        isOnBorder = YES;
+                    NSSet* neighbors = [self getAllNeighborsForX:b
+                                                            andY:a];
+
+                    NSMutableArray* neighborsIds = [NSMutableArray array];
+                    bool isOnBorder = NO;
+                    for (MKCell* neighbor in neighbors) {
+                        if (neighbor.grainId > 0) {
+                            [neighborsIds addObject:[NSNumber numberWithInteger:neighbor.grainId]];
+                        }
+                        if (neighbor.grainId != currentCell.grainId) {
+                            isOnBorder = YES;
+                        }
                     }
-                }
 
-                if (currentCell.grainId != -1) {
-                    if (neighborsIds.count > 0) {
-                        currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
-                        currentCell.isLiving = YES;
-                        currentCell.isOnBorder = isOnBorder;
-                        ++changes;
+                    if (currentCell.grainId != -1) {
+                        if (neighborsIds.count > 0) {
+                            currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
+                            currentCell.isLiving = YES;
+                            currentCell.isOnBorder = isOnBorder;
+                            ++changes;
+                        }
                     }
-                }
-            } break;
+                } break;
 
-            case Rules1_4: {
-                if (currentCell.grainId != -1 && currentCell.isOnBorder == YES) {
-                    if ([self rule1On:currentCell]) {
-                        ++changes;
-                    } else if ([self rule2On:currentCell]) {
-                        ++changes;
-                    } else if ([self rule3On:currentCell]) {
-                        ++changes;
-                    } else if ([self rule4On:currentCell]) {
-                        ++changes;
+                case Rules1_4: {
+                    if (currentCell.grainId != -1 && currentCell.isOnBorder == YES) {
+                        if ([self rule1On:currentCell]) {
+                            ++changes;
+                        } else if ([self rule2On:currentCell]) {
+                            ++changes;
+                        } else if ([self rule3On:currentCell]) {
+                            ++changes;
+                        } else if ([self rule4On:currentCell]) {
+                            ++changes;
+                        }
                     }
+
+                } break;
+
+                default:
+                    break;
                 }
-
-            } break;
-
-            default:
-                break;
             }
         }
     }
 
     //    [self allToLog];
 
+    [self endCycle];
+
+    DLog("number of changes %li", changes);
+    return changes;
+}
+
+- (void)endCycle
+{
     for (NSInteger a = 0; a < y; ++a) {
         for (NSInteger b = 0; b < x; ++b) {
             MKCell* currentCell = [self getX:b
@@ -148,9 +158,6 @@
             [self borderUpdate:currentCell];
         }
     }
-
-    DLog("number of changes %li", changes);
-    return changes;
 }
 
 - (NSSet*)getAllNeighborsForX:(NSInteger)X andY:(NSInteger)Y
@@ -573,4 +580,42 @@
     return anss;
 }
 
+- (NSInteger)saveGrainAtX:(NSInteger)X Y:(NSInteger)Y
+{
+    MKCell* currentCell = [self getX:X
+                                   Y:Y];
+    NSInteger change = 0;
+
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [[MKCell alloc] init];
+            if (cell.grainId == currentCell.grainId) {
+                cell.willGrow = NO;
+                ++change;
+            }
+        }
+    }
+
+    [self endCycle];
+    return change;
+}
+
+- (void)clear:(NSSet*)grainToSaveOrNil
+{
+    if (grainToSaveOrNil == nil) {
+        NSMutableArray* caMutable = [NSMutableArray array];
+        for (NSInteger a = 0; a < y; ++a) {
+            [caMutable addObject:[[NSMutableArray alloc] init]];
+            for (NSInteger b = 0; b < x; ++b) {
+                MKCell* cell = [[MKCell alloc] init];
+                cell.coordinateX = b;
+                cell.coordinateY = a;
+                [[caMutable objectAtIndex:a] addObject:cell];
+            }
+        }
+        ca = [NSArray arrayWithArray:caMutable];
+    } else {
+    }
+    [self endCycle];
+}
 @end

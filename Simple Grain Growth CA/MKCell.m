@@ -9,7 +9,7 @@
 #import "MKCell.h"
 
 @implementation MKCell
-@synthesize isOnBorder, isLiving, grainId, coordinateX, coordinateY;
+@synthesize isOnBorder, isLiving, grainId, coordinateX, coordinateY, willGrow;
 - (id)init
 {
     self.coordinateX = 0;
@@ -17,6 +17,7 @@
     self.grainId = 0;
     self.isLiving = NO;
     self.isOnBorder = YES;
+    self.willGrow = YES;
     return self;
 }
 
@@ -27,6 +28,7 @@
     self.grainId = hear.grainId;
     self.isLiving = hear.isLiving;
     self.isOnBorder = hear.isOnBorder;
+    self.willGrow = hear.willGrow;
     return self;
 }
 

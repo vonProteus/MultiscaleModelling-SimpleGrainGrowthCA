@@ -34,4 +34,6 @@
 - (NSInteger)addNewGrainAtX:(NSInteger)X Y:(NSInteger)Y;
 - (bool)addNewDislocationAtX:(NSInteger)X Y:(NSInteger)Y WithR:(NSInteger)R;
 - (bool)addNewDislocationAtX:(NSInteger)X Y:(NSInteger)Y WithD:(NSInteger)D;
+- (NSInteger)saveGrainAtX:(NSInteger)X Y:(NSInteger)Y;
+- (void)clear:(NSSet*)grainToSaveOrNil;
 @end

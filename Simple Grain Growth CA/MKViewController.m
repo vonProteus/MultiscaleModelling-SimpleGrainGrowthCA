@@ -105,7 +105,7 @@
 }
 - (IBAction)cleam:(id)sender
 {
-    self.automat = [[MKAutomat alloc] init];
+    [self.automat clear:nil];
     [self.view showAutomat:self.automat];
 }
 
@@ -150,6 +150,10 @@
     case addGrain:
         [self.automat addNewGrainAtX:X
                                    Y:Y];
+        break;
+    case addToSave:
+        [self.automat saveGrainAtX:X
+                                 Y:Y];
         break;
     default: {
         MKCell* cellTMP = [self.automat getX:X
@@ -244,5 +248,10 @@
     default:
         break;
     }
+}
+
+- (IBAction)addToSave:(id)sender
+{
+    self.status = addToSave;
 }
 @end

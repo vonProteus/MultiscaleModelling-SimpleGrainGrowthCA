@@ -18,6 +18,7 @@
 - (IBAction)andrzej:(id)sender;
 - (IBAction)andrzejToEnd:(id)sender;
 - (IBAction)newGrain:(id)sender;
+- (IBAction)addToSave:(id)sender;
 - (IBAction)newDislocationCircle:(id)sender;
 - (IBAction)newDislocationSquare:(id)sender;
 - (IBAction)newRandomDislocation:(id)sender;
