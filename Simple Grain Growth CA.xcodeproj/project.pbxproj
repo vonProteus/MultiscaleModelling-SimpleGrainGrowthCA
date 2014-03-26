@@ -14,24 +14,12 @@
 		705BC4C018D4AFCA00255AD2 /* MKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4BF18D4AFCA00255AD2 /* MKAppDelegate.m */; };
 		705BC4C318D4AFCB00255AD2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4C118D4AFCB00255AD2 /* MainMenu.xib */; };
 		705BC4C518D4AFCB00255AD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705BC4C418D4AFCB00255AD2 /* Images.xcassets */; };
-		705BC4CC18D4AFCB00255AD2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4CB18D4AFCB00255AD2 /* XCTest.framework */; };
-		705BC4CD18D4AFCB00255AD2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705BC4AC18D4AFCA00255AD2 /* Cocoa.framework */; };
 		705BC4E418D4B0B800255AD2 /* MKCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4E318D4B0B800255AD2 /* MKCell.m */; };
 		705BC4E718D4B0CC00255AD2 /* MKAutomat.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BC4E618D4B0CC00255AD2 /* MKAutomat.m */; };
 		7098BB7B18DCD02B005C608F /* MKAns.m in Sources */ = {isa = PBXBuildFile; fileRef = 7098BB7A18DCD02B005C608F /* MKAns.m */; };
 		70F2C22418D4CD8800CB5724 /* MKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F2C22318D4CD8800CB5724 /* MKViewController.m */; };
 		70F2C22718D4D42600CB5724 /* MKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F2C22618D4D42600CB5724 /* MKView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		705BC4CE18D4AFCB00255AD2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 705BC4A118D4AFCA00255AD2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 705BC4A818D4AFCA00255AD2;
-			remoteInfo = "Simple Grain Growth CA";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		705BC4A918D4AFCA00255AD2 /* Simple Grain Growth CA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Grain Growth CA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +36,6 @@
 		705BC4BF18D4AFCA00255AD2 /* MKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAppDelegate.m; sourceTree = "<group>"; };
 		705BC4C218D4AFCB00255AD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		705BC4C418D4AFCB00255AD2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		705BC4CA18D4AFCB00255AD2 /* Simple Grain Growth CATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Grain Growth CATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		705BC4CB18D4AFCB00255AD2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		705BC4E218D4B0B800255AD2 /* MKCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCell.h; sourceTree = "<group>"; };
 		705BC4E318D4B0B800255AD2 /* MKCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCell.m; sourceTree = "<group>"; };
@@ -72,15 +59,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		705BC4C718D4AFCB00255AD2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				705BC4CD18D4AFCB00255AD2 /* Cocoa.framework in Frameworks */,
-				705BC4CC18D4AFCB00255AD2 /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				705BC4A918D4AFCA00255AD2 /* Simple Grain Growth CA.app */,
-				705BC4CA18D4AFCB00255AD2 /* Simple Grain Growth CATests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,24 +171,6 @@
 			productReference = 705BC4A918D4AFCA00255AD2 /* Simple Grain Growth CA.app */;
 			productType = "com.apple.product-type.application";
 		};
-		705BC4C918D4AFCB00255AD2 /* Simple Grain Growth CATests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 705BC4DD18D4AFCB00255AD2 /* Build configuration list for PBXNativeTarget "Simple Grain Growth CATests" */;
-			buildPhases = (
-				705BC4C618D4AFCB00255AD2 /* Sources */,
-				705BC4C718D4AFCB00255AD2 /* Frameworks */,
-				705BC4C818D4AFCB00255AD2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				705BC4CF18D4AFCB00255AD2 /* PBXTargetDependency */,
-			);
-			name = "Simple Grain Growth CATests";
-			productName = "Simple Grain Growth CATests";
-			productReference = 705BC4CA18D4AFCB00255AD2 /* Simple Grain Growth CATests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -221,11 +180,6 @@
 				CLASSPREFIX = MK;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Photep;
-				TargetAttributes = {
-					705BC4C918D4AFCB00255AD2 = {
-						TestTargetID = 705BC4A818D4AFCA00255AD2;
-					};
-				};
 			};
 			buildConfigurationList = 705BC4A418D4AFCA00255AD2 /* Build configuration list for PBXProject "Simple Grain Growth CA" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -241,7 +195,6 @@
 			projectRoot = "";
 			targets = (
 				705BC4A818D4AFCA00255AD2 /* Simple Grain Growth CA */,
-				705BC4C918D4AFCB00255AD2 /* Simple Grain Growth CATests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,13 +208,6 @@
 				705BC4C518D4AFCB00255AD2 /* Images.xcassets in Resources */,
 				705BC4BD18D4AFCA00255AD2 /* Credits.rtf in Resources */,
 				705BC4C318D4AFCB00255AD2 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		705BC4C818D4AFCB00255AD2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,22 +244,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		705BC4C618D4AFCB00255AD2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		705BC4CF18D4AFCB00255AD2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 705BC4A818D4AFCA00255AD2 /* Simple Grain Growth CA */;
-			targetProxy = 705BC4CE18D4AFCB00255AD2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		705BC4B518D4AFCA00255AD2 /* InfoPlist.strings */ = {
@@ -439,46 +370,6 @@
 			};
 			name = Release;
 		};
-		705BC4DE18D4AFCB00255AD2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Simple Grain Growth CA.app/Contents/MacOS/Simple Grain Growth CA";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Simple Grain Growth CA/Simple Grain Growth CA-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Simple Grain Growth CATests/Simple Grain Growth CATests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		705BC4DF18D4AFCB00255AD2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Simple Grain Growth CA.app/Contents/MacOS/Simple Grain Growth CA";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Simple Grain Growth CA/Simple Grain Growth CA-Prefix.pch";
-				INFOPLIST_FILE = "Simple Grain Growth CATests/Simple Grain Growth CATests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -496,15 +387,6 @@
 			buildConfigurations = (
 				705BC4DB18D4AFCB00255AD2 /* Debug */,
 				705BC4DC18D4AFCB00255AD2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		705BC4DD18D4AFCB00255AD2 /* Build configuration list for PBXNativeTarget "Simple Grain Growth CATests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				705BC4DE18D4AFCB00255AD2 /* Debug */,
-				705BC4DF18D4AFCB00255AD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
