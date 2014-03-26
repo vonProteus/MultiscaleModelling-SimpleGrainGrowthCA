@@ -20,6 +20,7 @@
         <viewController id="aRu-yi-ybQ" customClass="MKViewController">
             <connections>
                 <outlet property="tfDislocationSize" destination="h71-wv-v4B" id="WIi-Eh-cUc"/>
+                <outlet property="tfGrainIdsToSave" destination="Q1B-do-EC0" id="uR4-8x-cXd"/>
                 <outlet property="tfInfo" destination="q5A-RF-0c6" id="7SM-4f-eWj"/>
                 <outlet property="view" destination="yZc-JU-eM7" id="T5B-U7-xiX"/>
             </connections>
@@ -917,6 +918,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="addToSave:" target="aRu-yi-ybQ" id="4fC-8H-gAR"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

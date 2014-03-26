@@ -16,5 +16,6 @@
 
 - (id)init;
 - (MKCell*)getAllFrom:(MKCell*)hear;
+- (void)clear;
 
 @end

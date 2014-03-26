@@ -14,6 +14,7 @@
 
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfInfo;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfDislocationSize;
+@property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfGrainIdsToSave;
 
 - (IBAction)andrzej:(id)sender;
 - (IBAction)andrzejToEnd:(id)sender;

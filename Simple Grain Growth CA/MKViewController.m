@@ -105,7 +105,17 @@
 }
 - (IBAction)cleam:(id)sender
 {
-    [self.automat clear:nil];
+    NSMutableSet* toSave = nil;
+
+    if ([[self.tfGrainIdsToSave stringValue] length] > 0) {
+        NSArray* splitId = [[self.tfGrainIdsToSave stringValue] componentsSeparatedByString:@", "];
+        toSave = [NSMutableSet set];
+        for (NSString* s in splitId) {
+            [toSave addObject:[NSNumber numberWithInteger:[s integerValue]]];
+        }
+    }
+
+    [self.automat clear:toSave];
     [self.view showAutomat:self.automat];
 }
 
@@ -151,10 +161,17 @@
         [self.automat addNewGrainAtX:X
                                    Y:Y];
         break;
-    case addToSave:
-        [self.automat saveGrainAtX:X
-                                 Y:Y];
-        break;
+    case addToSave: {
+        NSInteger idToSave = [self.automat saveGrainAtX:X
+                                                      Y:Y];
+        NSMutableString* grainIdsToSaveText = [NSMutableString stringWithString:[self.tfGrainIdsToSave stringValue]];
+        if ([grainIdsToSaveText length] > 0) {
+            [grainIdsToSaveText appendFormat:@", %li", idToSave];
+        } else {
+            [grainIdsToSaveText appendFormat:@"%li", idToSave];
+        }
+        [self.tfGrainIdsToSave setStringValue:grainIdsToSaveText];
+    } break;
     default: {
         MKCell* cellTMP = [self.automat getX:X
                                            Y:Y];

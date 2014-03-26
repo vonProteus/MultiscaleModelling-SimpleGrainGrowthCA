@@ -14,10 +14,7 @@
 {
     self.coordinateX = 0;
     self.coordinateY = 0;
-    self.grainId = 0;
-    self.isLiving = NO;
-    self.isOnBorder = YES;
-    self.willGrow = YES;
+    [self clear];
     return self;
 }
 
@@ -32,4 +29,11 @@
     return self;
 }
 
+- (void)clear
+{
+    self.grainId = 0;
+    self.isLiving = NO;
+    self.isOnBorder = YES;
+    self.willGrow = YES;
+}
 @end

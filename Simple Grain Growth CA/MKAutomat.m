@@ -283,6 +283,12 @@
         break;
     }
 
+//    
+//    for (MKCell* c in ansM) {
+//        if (c.willGrow == NO) {
+//            [ansM removeObject:c];
+//        }
+//    }
     return ansM;
 }
 
@@ -406,6 +412,7 @@
                     cellInR.grainId = -1;
                     cellInR.isLiving = YES;
                     cellInR.isOnBorder = NO;
+
                     [cellPrevInR getAllFrom:cellPrevInR];
                 }
             }
@@ -597,7 +604,7 @@
     }
 
     [self endCycle];
-    return change;
+    return currentCell.grainId;
 }
 
 - (void)clear:(NSSet*)grainToSaveOrNil
@@ -615,6 +622,17 @@
         }
         ca = [NSArray arrayWithArray:caMutable];
     } else {
+        for (NSInteger a = 0; a < y; ++a) {
+            for (NSInteger b = 0; b < x; ++b) {
+                MKCell* cell = [self getX:b
+                                        Y:a];
+                if (![grainToSaveOrNil containsObject:[NSNumber numberWithInteger:cell.grainId]]) {
+                    [cell clear];
+                } else {
+                    cell.willGrow = NO;
+                }
+            }
+        }
     }
     [self endCycle];
 }
