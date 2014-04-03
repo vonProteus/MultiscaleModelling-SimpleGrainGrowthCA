@@ -16,8 +16,8 @@
 
 - (id)init
 {
-    self = [self initWithX:150
-                         Y:150];
+    self = [self initWithX:50
+                         Y:50];
     return self;
 }
 
@@ -78,7 +78,7 @@
     switch (transitionRules) {
     case Montecarlo: {
         self.neighborsType = MoorNeighborhood;
-        NSMutableSet* toGo = [NSMutableSet set];
+        NSMutableArray* toGo = [NSMutableArray array];
         for (NSInteger a = 0; a < y; ++a) {
             for (NSInteger b = 0; b < x; ++b) {
                 MKCell* currentCell = [self getX:b
@@ -90,7 +90,7 @@
         }
 
         while ([toGo count] > 0) {
-            MKCell* cell = [[toGo allObjects] objectAtIndex:arc4random() % [toGo count]];
+            MKCell* cell = [toGo objectAtIndex:arc4random() % [toGo count]];
 
             NSSet* neighbors = [self getAllNeighborsForX:cell.coordinateX
                                                     andY:cell.coordinateY];
@@ -110,7 +110,7 @@
             }
 
             if (newEnergy <= energy) {
-//                DLog(@"%li", newId);
+                //                DLog(@"%li", newId);
                 cell.grainId = newId;
                 [self getPrevX:cell.coordinateX
                              Y:cell.coordinateY].grainId = newId;
@@ -446,7 +446,7 @@
     curentCell.grainId = self.lastId;
     curentCell.isLiving = YES;
     curentCell.isOnBorder = YES;
-    
+
     [prevCell getAllFrom:curentCell];
 
     //    [self allToLog];
