@@ -32,4 +32,5 @@ enum ViewStatus {
 enum TransitionRules {
     Rules1,
     Rules1_4,
+    Montecarlo,
 };

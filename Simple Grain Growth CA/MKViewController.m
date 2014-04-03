@@ -66,6 +66,17 @@
         }
     }
 
+    [self.automat clear:nil];
+    self.automat.transitionRules = Montecarlo;
+        self.automat.boundaryType  = periodicBoundaryConditions;
+    
+    for (NSInteger x = 0; x < self.automat.x; ++x) {
+        for (NSInteger y = 0; y < self.automat.y; ++y) {
+            [self.automat addNewGrainAtX:x
+                                       Y:y];
+        }
+    }
+
     [self.view showAutomat:self.automat];
 }
 
