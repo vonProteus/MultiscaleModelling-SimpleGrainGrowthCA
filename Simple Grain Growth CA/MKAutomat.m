@@ -91,31 +91,32 @@
 
         while ([toGo count] > 0) {
             MKCell* cell = [toGo objectAtIndex:arc4random() % [toGo count]];
+            if (cell.grainId > 0) {
 
-            NSSet* neighbors = [self getAllNeighborsForX:cell.coordinateX
-                                                    andY:cell.coordinateY];
-            NSInteger energy = [neighbors count];
-            NSInteger newEnergy = [neighbors count];
+                NSSet* neighbors = [self getAllNeighborsForX:cell.coordinateX
+                                                        andY:cell.coordinateY];
+                NSInteger energy = [neighbors count];
+                NSInteger newEnergy = [neighbors count];
 
-            MKCell* newCell = [[neighbors allObjects] objectAtIndex:arc4random() % [neighbors count]];
-            NSInteger newId = newCell.grainId;
+                MKCell* newCell = [[neighbors allObjects] objectAtIndex:arc4random() % [neighbors count]];
+                NSInteger newId = newCell.grainId;
 
-            for (MKCell* neighbor in neighbors) {
-                if (neighbor.grainId == cell.grainId) {
-                    --energy;
+                for (MKCell* neighbor in neighbors) {
+                    if (neighbor.grainId == cell.grainId) {
+                        --energy;
+                    }
+                    if (neighbor.grainId == newId) {
+                        --newEnergy;
+                    }
                 }
-                if (neighbor.grainId == newId) {
-                    --newEnergy;
+
+                if (newEnergy <= energy) {
+                    //                DLog(@"%li", newId);
+                    cell.grainId = newId;
+                    [self getPrevX:cell.coordinateX
+                                 Y:cell.coordinateY].grainId = newId;
                 }
             }
-
-            if (newEnergy <= energy) {
-                //                DLog(@"%li", newId);
-                cell.grainId = newId;
-                [self getPrevX:cell.coordinateX
-                             Y:cell.coordinateY].grainId = newId;
-            }
-
             [toGo removeObject:cell];
         }
 
@@ -130,31 +131,24 @@
                 if (currentCell.willGrow) {
                     switch (transitionRules) {
                     case Rules1: {
-                        if (currentCell.isLiving && currentCell.isOnBorder == NO) {
+                        if (currentCell.isLiving) {
                             continue;
                         }
                         NSSet* neighbors = [self getAllNeighborsForX:b
                                                                 andY:a];
-
                         NSMutableArray* neighborsIds = [NSMutableArray array];
-                        bool isOnBorder = NO;
                         for (MKCell* neighbor in neighbors) {
                             if (neighbor.grainId > 0) {
                                 [neighborsIds addObject:[NSNumber numberWithInteger:neighbor.grainId]];
                             }
-                            if (neighbor.grainId != currentCell.grainId) {
-                                isOnBorder = YES;
-                            }
                         }
 
-                        if (currentCell.grainId != -1) {
-                            if (neighborsIds.count > 0) {
-                                currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
-                                currentCell.isLiving = YES;
-                                currentCell.isOnBorder = isOnBorder;
-                                ++changes;
-                            }
+                        if (neighborsIds.count > 0) {
+                            currentCell.grainId = [[neighborsIds objectAtIndex:arc4random() % neighborsIds.count] intValue];
+                            currentCell.isLiving = YES;
+                            ++changes;
                         }
+
                     } break;
 
                     case Rules1_4: {
@@ -207,6 +201,26 @@
             [self borderUpdate:currentCell];
         }
     }
+}
+
+- (NSSet*)getAllNeighborsWhoCanGrowForX:(NSInteger)X andY:(NSInteger)Y
+{
+    NSMutableSet* ans = (NSMutableSet*)[self getAllNeighborsForX:X
+                                                            andY:Y];
+
+    NSMutableSet* toRemove = [NSMutableSet set];
+
+    for (MKCell* cell in ans) {
+        if (!cell.willGrow) {
+            [toRemove addObject:cell];
+        }
+    }
+
+    for (MKCell* cell in toRemove) {
+        [ans removeObject:cell];
+    }
+
+    return ans;
 }
 
 - (NSSet*)getAllNeighborsForX:(NSInteger)X andY:(NSInteger)Y
