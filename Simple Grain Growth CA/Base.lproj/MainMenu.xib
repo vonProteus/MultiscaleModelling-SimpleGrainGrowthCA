@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -22,6 +22,7 @@
                 <outlet property="tfDislocationSize" destination="h71-wv-v4B" id="WIi-Eh-cUc"/>
                 <outlet property="tfGrainIdsToSave" destination="Q1B-do-EC0" id="uR4-8x-cXd"/>
                 <outlet property="tfInfo" destination="q5A-RF-0c6" id="7SM-4f-eWj"/>
+                <outlet property="tfNumberOfGrainToCreate" destination="R5G-Ad-ydp" id="Acn-Vq-oSh"/>
                 <outlet property="view" destination="yZc-JU-eM7" id="T5B-U7-xiX"/>
             </connections>
         </viewController>
@@ -701,7 +702,7 @@
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="-1784" y="163" width="332" height="574"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="-1920" y="0.0" width="1920" height="1058"/>
             <value key="minSize" type="size" width="332" height="538"/>
             <value key="maxSize" type="size" width="332" height="538"/>
             <view key="contentView" id="icc-6Y-Q1J">
@@ -845,7 +846,7 @@
                         </connections>
                     </matrix>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h71-wv-v4B">
-                        <rect key="frame" x="20" y="206" width="292" height="22"/>
+                        <rect key="frame" x="20" y="206" width="146" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Size of Dislocation" drawsBackground="YES" id="3rG-VD-N3J">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="xN8-rD-Hvb"/>
@@ -924,6 +925,27 @@
                         </buttonCell>
                         <connections>
                             <action selector="addToSave:" target="aRu-yi-ybQ" id="4fC-8H-gAR"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5G-Ad-ydp">
+                        <rect key="frame" x="166" y="206" width="146" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Number of Grains" drawsBackground="YES" id="sjH-4T-muu">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Nou-4f-lSr"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEQ-jW-UQW">
+                        <rect key="frame" x="76" y="137" width="160" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="random add grains" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OX9-KB-XWc">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="newRandomGrain:" target="aRu-yi-ybQ" id="4lL-0J-TNP"/>
                         </connections>
                     </button>
                 </subviews>

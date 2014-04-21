@@ -288,7 +288,39 @@
 {
     self.status = addToSave;
 }
+- (IBAction)newRandomGrain:(id)sender
+{
+    NSInteger X = 0;
+    NSInteger Y = 0;
 
+    NSInteger numberOfGrain = self.tfNumberOfGrainToCreate.intValue;
+
+    NSInteger maxErrors = 100;
+    NSInteger errors = 0;
+
+    NSInteger added = 0;
+
+    for (NSInteger n = 0; n < numberOfGrain; ++n) {
+        if (errors > maxErrors) {
+            break;
+        }
+        X = arc4random() % self.automat.x;
+        Y = arc4random() % self.automat.y;
+        if ([self.automat getX:X
+                             Y:Y].grainId == 0) {
+            [self.automat addNewGrainAtX:X
+                                       Y:Y];
+            ++added;
+            errors = 0;
+        } else {
+            --n;
+            ++errors;
+        }
+    }
+
+    DLog("grains added %li", added);
+    [self.view showAutomat:self.automat];
+}
 - (void)doClearAutomat
 {
     NSMutableSet* toSave = nil;

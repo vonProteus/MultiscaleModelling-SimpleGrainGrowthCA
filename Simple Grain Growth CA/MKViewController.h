@@ -15,6 +15,7 @@
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfInfo;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfDislocationSize;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfGrainIdsToSave;
+@property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfNumberOfGrainToCreate;
 
 - (IBAction)andrzej:(id)sender;
 - (IBAction)andrzejToEnd:(id)sender;
@@ -23,6 +24,7 @@
 - (IBAction)newDislocationCircle:(id)sender;
 - (IBAction)newDislocationSquare:(id)sender;
 - (IBAction)newRandomDislocation:(id)sender;
+- (IBAction)newRandomGrain:(id)sender;
 - (IBAction)cleam:(id)sender;
 
 - (IBAction)boundaryTypeChange:(id)sender;
