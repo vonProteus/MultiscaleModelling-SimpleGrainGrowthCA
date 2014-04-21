@@ -866,10 +866,10 @@
                         </connections>
                     </button>
                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aq4-aq-acg">
-                        <rect key="frame" x="188" y="396" width="124" height="38"/>
+                        <rect key="frame" x="188" y="376" width="124" height="58"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        <size key="cellSize" width="74" height="18"/>
+                        <size key="cellSize" width="93" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="Jnb-Ia-AYN">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -882,6 +882,10 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <buttonCell type="radio" title="Rule1-4" imagePosition="left" alignment="left" tag="2" inset="2" id="tge-vq-UbY">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="radio" title="Montecarlo" imagePosition="left" alignment="left" tag="3" inset="2" id="s4A-Tq-h6u">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

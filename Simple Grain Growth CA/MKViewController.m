@@ -66,16 +66,16 @@
         }
     }
 
-    [self.automat clear:nil];
-    self.automat.transitionRules = Montecarlo;
-        self.automat.boundaryType  = periodicBoundaryConditions;
-    
-    for (NSInteger x = 0; x < self.automat.x; ++x) {
-        for (NSInteger y = 0; y < self.automat.y; ++y) {
-            [self.automat addNewGrainAtX:x
-                                       Y:y];
-        }
-    }
+    //    [self.automat clear:nil];
+    //    self.automat.transitionRules = Montecarlo;
+    //        self.automat.boundaryType  = periodicBoundaryConditions;
+    //
+    //    for (NSInteger x = 0; x < self.automat.x; ++x) {
+    //        for (NSInteger y = 0; y < self.automat.y; ++y) {
+    //            [self.automat addNewGrainAtX:x
+    //                                       Y:y];
+    //        }
+    //    }
 
     [self.view showAutomat:self.automat];
 }
@@ -116,17 +116,7 @@
 }
 - (IBAction)cleam:(id)sender
 {
-    NSMutableSet* toSave = nil;
-
-    if ([[self.tfGrainIdsToSave stringValue] length] > 0) {
-        NSArray* splitId = [[self.tfGrainIdsToSave stringValue] componentsSeparatedByString:@", "];
-        toSave = [NSMutableSet set];
-        for (NSString* s in splitId) {
-            [toSave addObject:[NSNumber numberWithInteger:[s integerValue]]];
-        }
-    }
-
-    [self.automat clear:toSave];
+    [self doClearAutomat];
     [self.view showAutomat:self.automat];
 }
 
@@ -272,6 +262,22 @@
         DLog("Rules1_4");
         self.automat.transitionRules = Rules1_4;
         break;
+    case 3:
+        DLog("Montecarlo");
+        [self doClearAutomat];
+        for (NSInteger x = 0; x < self.automat.x; ++x) {
+            for (NSInteger y = 0; y < self.automat.y; ++y) {
+                if ([self.automat getX:x
+                                     Y:y].grainId == 0) {
+                    [self.automat addNewGrainAtX:x
+                                               Y:y];
+                }
+            }
+        }
+
+        self.automat.transitionRules = Montecarlo;
+        [self.view showAutomat:self.automat];
+        break;
 
     default:
         break;
@@ -281,5 +287,20 @@
 - (IBAction)addToSave:(id)sender
 {
     self.status = addToSave;
+}
+
+- (void)doClearAutomat
+{
+    NSMutableSet* toSave = nil;
+
+    if ([[self.tfGrainIdsToSave stringValue] length] > 0) {
+        NSArray* splitId = [[self.tfGrainIdsToSave stringValue] componentsSeparatedByString:@", "];
+        toSave = [NSMutableSet set];
+        for (NSString* s in splitId) {
+            [toSave addObject:[NSNumber numberWithInteger:[s integerValue]]];
+        }
+    }
+
+    [self.automat clear:toSave];
 }
 @end

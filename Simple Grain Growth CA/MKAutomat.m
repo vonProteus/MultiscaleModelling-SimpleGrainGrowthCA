@@ -93,8 +93,8 @@
             MKCell* cell = [toGo objectAtIndex:arc4random() % [toGo count]];
             if (cell.grainId > 0) {
 
-                NSSet* neighbors = [self getAllNeighborsForX:cell.coordinateX
-                                                        andY:cell.coordinateY];
+                NSSet* neighbors = [self getAllNeighborsWhoCanGrowForX:cell.coordinateX
+                                                                  andY:cell.coordinateY];
                 NSInteger energy = [neighbors count];
                 NSInteger newEnergy = [neighbors count];
 
@@ -134,8 +134,8 @@
                         if (currentCell.isLiving) {
                             continue;
                         }
-                        NSSet* neighbors = [self getAllNeighborsForX:b
-                                                                andY:a];
+                        NSSet* neighbors = [self getAllNeighborsWhoCanGrowForX:b
+                                                                          andY:a];
                         NSMutableArray* neighborsIds = [NSMutableArray array];
                         for (MKCell* neighbor in neighbors) {
                             if (neighbor.grainId > 0) {
@@ -484,6 +484,7 @@
                     cellInR.grainId = -1;
                     cellInR.isLiving = YES;
                     cellInR.isOnBorder = NO;
+                    cellInR.willGrow = NO;
 
                     [cellPrevInR getAllFrom:cellPrevInR];
                 }
@@ -513,6 +514,8 @@
                 cellInD.grainId = -1;
                 cellInD.isLiving = YES;
                 cellInD.isOnBorder = NO;
+                cellInD.willGrow = NO;
+
                 [cellPrevInD getAllFrom:cellPrevInD];
             }
         }
@@ -553,8 +556,8 @@
 - (BOOL)genericRuleForNeighbors:(enum NeighborsTypes)neighborhood minimumOfNeighborers:(NSInteger)min onCell:(MKCell*)currentCell
 {
     neighborsType = neighborhood;
-    NSSet* neighbors = [self getAllNeighborsForX:currentCell.coordinateX
-                                            andY:currentCell.coordinateY];
+    NSSet* neighbors = [self getAllNeighborsWhoCanGrowForX:currentCell.coordinateX
+                                                      andY:currentCell.coordinateY];
     NSArray* count = [self getStatsFor:neighbors];
 
     MKAns* bestAns = nil;
@@ -602,8 +605,8 @@
 - (BOOL)rule4On:(MKCell*)currentCell
 {
     neighborsType = MoorNeighborhood;
-    NSSet* neighbors = [self getAllNeighborsForX:currentCell.coordinateX
-                                            andY:currentCell.coordinateY];
+    NSSet* neighbors = [self getAllNeighborsWhoCanGrowForX:currentCell.coordinateX
+                                                      andY:currentCell.coordinateY];
 
     NSMutableArray* neighborsIds = [NSMutableArray array];
     for (MKCell* neighbor in neighbors) {
@@ -623,8 +626,8 @@
 - (void)borderUpdate:(MKCell*)currentCell
 {
     neighborsType = MoorNeighborhood;
-    NSSet* neighbors = [self getAllNeighborsForX:currentCell.coordinateX
-                                            andY:currentCell.coordinateY];
+    NSSet* neighbors = [self getAllNeighborsWhoCanGrowForX:currentCell.coordinateX
+                                                      andY:currentCell.coordinateY];
     currentCell.isOnBorder = NO;
 
     for (MKCell* neighbor in neighbors) {
