@@ -130,8 +130,8 @@
         }
     } break;
     case Energy: {
-        CGFloat min = [automat minEnergy]; //120/360
-        CGFloat max = [automat maxEnergy]; //240/360
+        CGFloat min = [automat minEnergy]; //120/360 1/3
+        CGFloat max = [automat maxEnergy]; //240/360 2/3
         CGFloat maxMin = max - min;
 
         for (NSInteger Y = 0; Y < automat.y; ++Y) {
@@ -141,9 +141,9 @@
                 CGFloat energy = [automat getX:X
                                              Y:Y].energy;
 
-                CGFloat colorVal = 1.0 / 3.0;
-                if (abs(maxMin) > 0.00000001) {
-                    colorVal += ((energy - min) / (maxMin)) / 3.0;
+                CGFloat colorVal = 2.0 / 3.0;
+                if (ABS(maxMin) > 0.00000001) {
+                    colorVal -= ((energy - min) / (maxMin)) / 3.0;
                 }
 
                 [line addObject:[NSColor colorWithCalibratedHue:colorVal

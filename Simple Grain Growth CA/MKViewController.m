@@ -342,8 +342,9 @@
     [self.automat clear:toSave];
 }
 
-- (IBAction)AddEnergy:(id)sender
+- (IBAction)addEnergy:(id)sender
 {
+    [self.automat addEnergyForGrain:[self.tfEnergyForGrain floatValue]];
 }
 
 - (IBAction)viewTypeChange:(id)sender
@@ -366,30 +367,13 @@
 {
     switch ([[sender selectedCell] tag]) {
     case 1:
-        DLog("Rules1");
-        self.automat.transitionRules = Rules1;
+        DLog("Homogenous");
+        self.automat.energyDystrybution = Homogenous;
         break;
     case 2:
-        DLog("Rules1_4");
-        self.automat.transitionRules = Rules1_4;
+        DLog("Heterogenous");
+        self.automat.energyDystrybution = Heterogenous;
         break;
-    case 3:
-        DLog("Montecarlo");
-        [self doClearAutomat];
-        for (NSInteger x = 0; x < self.automat.x; ++x) {
-            for (NSInteger y = 0; y < self.automat.y; ++y) {
-                if ([self.automat getX:x
-                                     Y:y].grainId == 0) {
-                    [self.automat addNewGrainAtX:x
-                                               Y:y];
-                }
-            }
-        }
-
-        self.automat.transitionRules = Montecarlo;
-        [self.view showAutomat:self.automat];
-        break;
-
     default:
         break;
     }

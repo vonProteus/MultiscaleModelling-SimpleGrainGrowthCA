@@ -12,7 +12,7 @@
 
 @implementation MKAutomat
 
-@synthesize x, y, boundaryType, neighborsType, lastId, transitionRules, behavior;
+@synthesize x, y, boundaryType, neighborsType, lastId, transitionRules, behavior, energyDystrybution;
 
 - (id)init
 {
@@ -29,6 +29,7 @@
     transitionRules = Rules1;
     neighborsType = MoorNeighborhood;
     behavior = NormalGrowth;
+    energyDystrybution = Homogenous;
     NSMutableArray* caMutable = [NSMutableArray array];
 
     for (NSInteger a = 0; a < y; ++a) {
@@ -790,5 +791,31 @@
         }
     }
     return minEnergy;
+}
+
+- (void)addEnergyForGrain:(CGFloat)energyForGrain
+{
+    NSMutableDictionary* grainSizes = [NSMutableDictionary dictionary];
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [self getX:b
+                                    Y:a];
+            NSString* kay = [NSString stringWithFormat:@"%li", cell.grainId];
+            NSNumber* size = [grainSizes valueForKey:kay];
+            if (size == nil) {
+                size = [NSNumber numberWithInteger:[self sizeOfGrainWithId:cell.grainId]];
+                [grainSizes setObject:size
+                               forKey:kay];
+            }
+
+            switch (self.energyDystrybution) {
+            case Homogenous:
+                cell.energy = energyForGrain / [size floatValue];
+                break;
+            default:
+                break;
+            }
+        }
+    }
 }
 @end

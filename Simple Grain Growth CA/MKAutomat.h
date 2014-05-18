@@ -18,6 +18,7 @@
     enum NeighborsTypes neighborsType;
     enum TransitionRules transitionRules;
     enum Behavior behavior;
+    enum EnergyDystrybution energyDystrybution;
     MKCell* absorbingCell;
 }
 
@@ -26,6 +27,7 @@
 @property (readwrite) enum NeighborsTypes neighborsType;
 @property (readwrite) enum TransitionRules transitionRules;
 @property (readwrite) enum Behavior behavior;
+@property (readwrite) enum EnergyDystrybution energyDystrybution;
 
 - (id)init;
 - (id)initWithX:(NSInteger)X Y:(NSInteger)Y;
@@ -45,4 +47,6 @@
 - (CGFloat)energyOfGrainWithId:(NSInteger)grainId;
 - (CGFloat)maxEnergy;
 - (CGFloat)minEnergy;
+
+- (void)addEnergyForGrain:(CGFloat)energyForGrain;
 @end

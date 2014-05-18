@@ -957,7 +957,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="AddEnergy:" target="aRu-yi-ybQ" id="ehj-DA-qd1"/>
+                            <action selector="addEnergy:" target="aRu-yi-ybQ" id="RBr-nO-Ikb"/>
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daQ-iy-aRt">

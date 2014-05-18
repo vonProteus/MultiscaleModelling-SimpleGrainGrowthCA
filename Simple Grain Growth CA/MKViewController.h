@@ -27,7 +27,7 @@
 - (IBAction)newRandomDislocation:(id)sender;
 - (IBAction)newRandomGrain:(id)sender;
 - (IBAction)cleam:(id)sender;
-- (IBAction)AddEnergy:(id)sender;
+- (IBAction)addEnergy:(id)sender;
 
 - (IBAction)boundaryTypeChange:(id)sender;
 - (IBAction)neighborsTypeChange:(id)sender;
