@@ -181,6 +181,7 @@
         [infoText appendFormat:@"GrainID: %li\n", cellTMP.grainId];
         [infoText appendFormat:@"Living: %@\n", cellTMP.isLiving ? @"YES" : @"NO"];
         [infoText appendFormat:@"On border: %@\n", cellTMP.isOnBorder ? @"YES" : @"NO"];
+        [infoText appendFormat:@"Will grow: %@\n", cellTMP.willGrow ? @"YES" : @"NO"];
         [infoText appendFormat:@"Was changed: %@\n", cellTMP.wasChanged ? @"YES" : @"NO"];
         [infoText appendFormat:@"Was recristalized: %@\n", cellTMP.wasRecristalized ? @"YES" : @"NO"];
         [infoText appendFormat:@"Energy in Cell: %f\n", cellTMP.energy];
@@ -300,6 +301,11 @@
 
     NSInteger numberOfGrain = self.tfNumberOfGrainToCreate.intValue;
 
+    CGFloat maxEnergy = [self.automat maxEnergy];
+    CGFloat minEnergy = [self.automat minEnergy];
+    CGFloat maxMin = maxEnergy - minEnergy;
+    CGFloat energyToGo = [self.automat minEnergy];
+
     NSInteger maxErrors = 100;
     NSInteger errors = 0;
 
@@ -311,15 +317,37 @@
         }
         X = arc4random() % self.automat.x;
         Y = arc4random() % self.automat.y;
-        if ([self.automat getX:X
-                             Y:Y].grainId == 0) {
-            [self.automat addNewGrainAtX:X
-                                       Y:Y];
-            ++added;
-            errors = 0;
-        } else {
-            --n;
-            ++errors;
+        energyToGo = (arc4random() % 100000) / (maxMin) + minEnergy;
+
+        switch (self.automat.behavior) {
+        case NormalGrowth: {
+            if ([self.automat getX:X
+                                 Y:Y].grainId == 0) {
+                [self.automat addNewGrainAtX:X
+                                           Y:Y];
+                ++added;
+                errors = 0;
+            } else {
+                --n;
+                ++errors;
+            }
+        } break;
+        case Recrystalization: {
+            if ([self.automat getX:X
+                                 Y:Y].energy > energyToGo) {
+                [self.automat addNewGrainAtX:X
+                                           Y:Y];
+                ++added;
+                errors = 0;
+            } else {
+                --n;
+                ++errors;
+            }
+
+        } break;
+
+        default:
+            break;
         }
     }
 
@@ -345,7 +373,7 @@
 - (IBAction)addEnergy:(id)sender
 {
     [self.automat addEnergyForGrain:[self.tfEnergyForGrain floatValue]];
-    self.automat.behavior = Recrystalization;
+    [self.automat setBehavior:Recrystalization];
 }
 
 - (IBAction)viewTypeChange:(id)sender

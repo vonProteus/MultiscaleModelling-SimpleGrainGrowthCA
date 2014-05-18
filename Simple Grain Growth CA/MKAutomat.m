@@ -465,6 +465,18 @@
     curentCell.isLiving = YES;
     curentCell.isOnBorder = YES;
 
+    switch (behavior) {
+    case NormalGrowth:
+        break;
+    case Recrystalization: {
+        curentCell.wasRecristalized = YES;
+        curentCell.willGrow = YES;
+    } break;
+
+    default:
+        break;
+    }
+
     [prevCell getAllFrom:curentCell];
 
     //    [self allToLog];
@@ -830,6 +842,27 @@
                 break;
             }
         }
+    }
+}
+- (void)setBehavior:(enum Behavior)newBehavior
+{
+    if (behavior != newBehavior) {
+        switch (newBehavior) {
+        case NormalGrowth:
+            break;
+        case Recrystalization:
+            for (NSInteger a = 0; a < y; ++a) {
+                for (NSInteger b = 0; b < x; ++b) {
+                    MKCell* cell = [self getX:b
+                                            Y:a];
+                    cell.willGrow = NO;
+                }
+            }
+            break;
+        default:
+            break;
+        }
+        behavior = newBehavior;
     }
 }
 @end
