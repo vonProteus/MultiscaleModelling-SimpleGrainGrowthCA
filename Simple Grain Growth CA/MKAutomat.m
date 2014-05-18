@@ -711,4 +711,24 @@
     }
     [self endCycle];
 }
+
+- (NSInteger)changeGrainID:(NSInteger)gid toNewGrainID:(NSInteger)newGrainId
+{
+    NSInteger count = 0;
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [self getX:b
+                                    Y:a];
+            if (cell.grainId == gid) {
+                cell.grainId = newGrainId;
+                ++count;
+            } else {
+                cell.willGrow = NO;
+            }
+        }
+    }
+    [self endCycle];
+    return count;
+}
+
 @end

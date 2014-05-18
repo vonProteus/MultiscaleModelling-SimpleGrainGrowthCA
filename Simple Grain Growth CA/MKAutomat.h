@@ -31,6 +31,8 @@
 - (NSInteger)andrzej;
 - (MKCell*)getX:(NSInteger)X Y:(NSInteger)Y;
 
+- (NSInteger)changeGrainID:(NSInteger)gid toNewGrainID:(NSInteger)newGrainId;
+
 - (NSInteger)addNewGrainAtX:(NSInteger)X Y:(NSInteger)Y;
 - (bool)addNewDislocationAtX:(NSInteger)X Y:(NSInteger)Y WithR:(NSInteger)R;
 - (bool)addNewDislocationAtX:(NSInteger)X Y:(NSInteger)Y WithD:(NSInteger)D;
