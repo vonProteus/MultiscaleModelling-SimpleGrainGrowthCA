@@ -816,9 +816,9 @@
                 cell.energy = energyForGrain;
                 break;
             case Heterogenous: {
-                CGFloat r = sqrt([size floatValue] / M_PI);
+                CGFloat r = [size floatValue] / M_PI;
                 CGFloat borderLenght = M_2_PI * r;
-                CGFloat energyForBorder = 0.7 * energyForGrain;
+                CGFloat energyForBorder = 0.3 * energyForGrain;
                 CGFloat energyForInside = energyForGrain - energyForBorder;
                 if (cell.isOnBorder) {
                     cell.energy = energyForBorder / borderLenght;
