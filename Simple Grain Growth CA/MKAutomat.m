@@ -12,7 +12,7 @@
 
 @implementation MKAutomat
 
-@synthesize x, y, boundaryType, neighborsType, lastId, transitionRules;
+@synthesize x, y, boundaryType, neighborsType, lastId, transitionRules, behavior;
 
 - (id)init
 {
@@ -28,6 +28,7 @@
     boundaryType = periodicBoundaryConditions;
     transitionRules = Rules1;
     neighborsType = MoorNeighborhood;
+    behavior = NormalGrowth;
     NSMutableArray* caMutable = [NSMutableArray array];
 
     for (NSInteger a = 0; a < y; ++a) {
@@ -199,6 +200,8 @@
             MKCell* currentCell = [self getX:b
                                            Y:a];
             [self borderUpdate:currentCell];
+
+            currentCell.wasChanged = NO;
         }
     }
 }
@@ -731,4 +734,61 @@
     return count;
 }
 
+- (NSInteger)sizeOfGrainWithId:(NSInteger)grainId
+{
+    NSInteger count = 0;
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [self getX:b
+                                    Y:a];
+            if (cell.grainId == grainId) {
+                ++count;
+            }
+        }
+    }
+    return count;
+}
+- (CGFloat)energyOfGrainWithId:(NSInteger)grainId
+{
+    CGFloat energyInGrain = 0;
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [self getX:b
+                                    Y:a];
+            if (cell.grainId == grainId) {
+                energyInGrain += cell.energy;
+            }
+        }
+    }
+    return energyInGrain;
+}
+
+- (CGFloat)maxEnergy
+{
+    CGFloat maxEnergy = CGFLOAT_MIN;
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [self getX:b
+                                    Y:a];
+            if (cell.energy > maxEnergy) {
+                maxEnergy = cell.energy;
+            }
+        }
+    }
+    return maxEnergy;
+}
+- (CGFloat)minEnergy
+{
+    CGFloat minEnergy = CGFLOAT_MAX;
+    for (NSInteger a = 0; a < y; ++a) {
+        for (NSInteger b = 0; b < x; ++b) {
+            MKCell* cell = [self getX:b
+                                    Y:a];
+            if (cell.energy < minEnergy) {
+                minEnergy = cell.energy;
+            }
+        }
+    }
+    return minEnergy;
+}
 @end

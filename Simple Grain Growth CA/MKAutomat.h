@@ -17,6 +17,7 @@
     enum BoundaryTypes boundaryType;
     enum NeighborsTypes neighborsType;
     enum TransitionRules transitionRules;
+    enum Behavior behavior;
     MKCell* absorbingCell;
 }
 
@@ -24,6 +25,7 @@
 @property (readwrite) enum BoundaryTypes boundaryType;
 @property (readwrite) enum NeighborsTypes neighborsType;
 @property (readwrite) enum TransitionRules transitionRules;
+@property (readwrite) enum Behavior behavior;
 
 - (id)init;
 - (id)initWithX:(NSInteger)X Y:(NSInteger)Y;
@@ -38,4 +40,9 @@
 - (bool)addNewDislocationAtX:(NSInteger)X Y:(NSInteger)Y WithD:(NSInteger)D;
 - (NSInteger)saveGrainAtX:(NSInteger)X Y:(NSInteger)Y;
 - (void)clear:(NSSet*)grainToSaveOrNil;
+
+- (NSInteger)sizeOfGrainWithId:(NSInteger)grainId;
+- (CGFloat)energyOfGrainWithId:(NSInteger)grainId;
+- (CGFloat)maxEnergy;
+- (CGFloat)minEnergy;
 @end

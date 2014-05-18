@@ -24,7 +24,6 @@
     DLog("start");
     self.view.delegate = self;
     self.automat = [[MKAutomat alloc] init];
-    self.automat.transitionRules = Rules1_4;
 
     NSInteger numberOfGrainOnStart = 15;
     NSInteger numberOfDislocationOnStart = 5;
@@ -182,6 +181,12 @@
         [infoText appendFormat:@"GrainID: %li\n", cellTMP.grainId];
         [infoText appendFormat:@"Living: %@\n", cellTMP.isLiving ? @"YES" : @"NO"];
         [infoText appendFormat:@"On border: %@\n", cellTMP.isOnBorder ? @"YES" : @"NO"];
+        [infoText appendFormat:@"Was changed: %@\n", cellTMP.wasChanged ? @"YES" : @"NO"];
+        [infoText appendFormat:@"Was recristalized: %@\n", cellTMP.wasRecristalized ? @"YES" : @"NO"];
+        [infoText appendFormat:@"Energy in Cell: %f\n", cellTMP.energy];
+        [infoText appendFormat:@"Energy in Grain: %f\n", [self.automat energyOfGrainWithId:cellTMP.grainId]];
+        [infoText appendFormat:@"Size of Grain: %li\n", [self.automat sizeOfGrainWithId:cellTMP.grainId]];
+        DLog(@"%@", infoText);
         [self.tfInfo setStringValue:infoText];
         break;
     }
@@ -321,6 +326,7 @@
     DLog("grains added %li", added);
     [self.view showAutomat:self.automat];
 }
+
 - (void)doClearAutomat
 {
     NSMutableSet* toSave = nil;
@@ -334,5 +340,58 @@
     }
 
     [self.automat clear:toSave];
+}
+
+- (IBAction)AddEnergy:(id)sender
+{
+}
+
+- (IBAction)viewTypeChange:(id)sender
+{
+    switch ([[sender selectedCell] tag]) {
+    case 1:
+        DLog("Structure");
+        self.view.viewType = Structure;
+        break;
+    case 2:
+        DLog("Energy");
+        self.view.viewType = Energy;
+        break;
+    default:
+        break;
+    }
+    [self.view showAutomat:self.automat];
+}
+- (IBAction)energyDystrybutionChange:(id)sender
+{
+    switch ([[sender selectedCell] tag]) {
+    case 1:
+        DLog("Rules1");
+        self.automat.transitionRules = Rules1;
+        break;
+    case 2:
+        DLog("Rules1_4");
+        self.automat.transitionRules = Rules1_4;
+        break;
+    case 3:
+        DLog("Montecarlo");
+        [self doClearAutomat];
+        for (NSInteger x = 0; x < self.automat.x; ++x) {
+            for (NSInteger y = 0; y < self.automat.y; ++y) {
+                if ([self.automat getX:x
+                                     Y:y].grainId == 0) {
+                    [self.automat addNewGrainAtX:x
+                                               Y:y];
+                }
+            }
+        }
+
+        self.automat.transitionRules = Montecarlo;
+        [self.view showAutomat:self.automat];
+        break;
+
+    default:
+        break;
+    }
 }
 @end

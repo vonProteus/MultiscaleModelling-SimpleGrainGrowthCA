@@ -19,8 +19,10 @@
 @interface MKView : NSView {
     NSMutableArray* colors;
     NSMutableArray* toDraw;
+    enum ViewType viewType;
 }
 @property (nonatomic, assign) id delegate;
+@property (readwrite) enum ViewType viewType;
 
 - (void)showAutomat:(MKAutomat*)automat;
 

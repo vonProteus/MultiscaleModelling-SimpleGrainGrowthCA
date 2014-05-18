@@ -9,6 +9,7 @@
 #import "MKView.h"
 
 @implementation MKView
+@synthesize viewType;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -24,6 +25,7 @@
                       A:0];
         toDraw = [NSMutableArray array];
         [toDraw addObject:[NSMutableArray array]];
+        viewType = Structure;
     }
     return self;
 }
@@ -104,25 +106,53 @@
 
     [toDraw removeAllObjects];
 
-    NSColor* dislocationColor = [NSColor blackColor];
+    switch (self.viewType) {
+    case Structure: {
+        NSColor* dislocationColor = [NSColor blackColor];
 
-    for (NSInteger Y = 0; Y < automat.y; ++Y) {
-        NSMutableArray* line = [NSMutableArray array];
-        for (NSInteger X = 0; X < automat.x; ++X) {
+        for (NSInteger Y = 0; Y < automat.y; ++Y) {
+            NSMutableArray* line = [NSMutableArray array];
+            for (NSInteger X = 0; X < automat.x; ++X) {
 
-            NSInteger grainId = [automat getX:X
-                                            Y:Y].grainId;
+                NSInteger grainId = [automat getX:X
+                                                Y:Y].grainId;
 
-            if (grainId == -1) {
-                [line addObject:dislocationColor];
-            } else if (grainId >= 0) {
-                [line addObject:[colors objectAtIndex:grainId]];
+                if (grainId == -1) {
+                    [line addObject:dislocationColor];
+                } else if (grainId >= 0) {
+                    [line addObject:[colors objectAtIndex:grainId]];
+                }
+
+                //            DLog("%li %li %li", X, Y, [automat getX:X
+                //                                                  Y:Y].grainId);
             }
-
-            //            DLog("%li %li %li", X, Y, [automat getX:X
-            //                                                  Y:Y].grainId);
+            [toDraw addObject:line];
         }
-        [toDraw addObject:line];
+    } break;
+    case Energy: {
+        CGFloat min = [automat minEnergy]; //120/360
+        CGFloat max = [automat maxEnergy]; //240/360
+
+        for (NSInteger Y = 0; Y < automat.y; ++Y) {
+            NSMutableArray* line = [NSMutableArray array];
+            for (NSInteger X = 0; X < automat.x; ++X) {
+
+                CGFloat energy = [automat getX:X
+                                             Y:Y].energy;
+
+                CGFloat colorVal = ((energy - min) / (max - min)) / 3 + 1 / 3;
+
+                [line addObject:[NSColor colorWithCalibratedHue:colorVal
+                                                     saturation:1
+                                                     brightness:1
+                                                          alpha:1]];
+            }
+            [toDraw addObject:line];
+        }
+
+    } break;
+    default:
+        break;
     }
 
     [self setNeedsDisplay:YES];

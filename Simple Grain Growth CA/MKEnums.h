@@ -34,3 +34,18 @@ enum TransitionRules {
     Rules1_4,
     Montecarlo,
 };
+
+enum Behavior {
+    NormalGrowth,
+    Recrystalization,
+};
+
+enum ViewType {
+    Structure,
+    Energy,
+};
+
+enum EnergyDystrybution {
+    Homogenous,
+    Heterogenous,
+};

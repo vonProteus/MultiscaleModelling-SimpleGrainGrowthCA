@@ -16,6 +16,7 @@
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfDislocationSize;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfGrainIdsToSave;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfNumberOfGrainToCreate;
+@property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfEnergyForGrain;
 
 - (IBAction)andrzej:(id)sender;
 - (IBAction)andrzejToEnd:(id)sender;
@@ -26,9 +27,12 @@
 - (IBAction)newRandomDislocation:(id)sender;
 - (IBAction)newRandomGrain:(id)sender;
 - (IBAction)cleam:(id)sender;
+- (IBAction)AddEnergy:(id)sender;
 
 - (IBAction)boundaryTypeChange:(id)sender;
 - (IBAction)neighborsTypeChange:(id)sender;
 - (IBAction)ruleTypeChange:(id)sender;
+- (IBAction)viewTypeChange:(id)sender;
+- (IBAction)energyDystrybutionChange:(id)sender;
 
 @end

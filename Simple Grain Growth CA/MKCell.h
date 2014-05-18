@@ -11,8 +11,9 @@
 @interface MKCell : NSObject
 
 @property (readwrite) NSInteger grainId;
-@property (readwrite) BOOL isOnBorder, isLiving, willGrow, wasChanged;
+@property (readwrite) BOOL isOnBorder, isLiving, willGrow, wasChanged, wasRecristalized;
 @property (readwrite) NSInteger coordinateX, coordinateY;
+@property (readwrite) CGFloat energy;
 
 - (id)init;
 - (MKCell*)getAllFrom:(MKCell*)hear;
