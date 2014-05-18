@@ -132,6 +132,7 @@
     case Energy: {
         CGFloat min = [automat minEnergy]; //120/360
         CGFloat max = [automat maxEnergy]; //240/360
+        CGFloat maxMin = max - min;
 
         for (NSInteger Y = 0; Y < automat.y; ++Y) {
             NSMutableArray* line = [NSMutableArray array];
@@ -140,7 +141,10 @@
                 CGFloat energy = [automat getX:X
                                              Y:Y].energy;
 
-                CGFloat colorVal = ((energy - min) / (max - min)) / 3 + 1 / 3;
+                CGFloat colorVal = 1.0 / 3.0;
+                if (abs(maxMin) > 0.00000001) {
+                    colorVal += ((energy - min) / (maxMin)) / 3.0;
+                }
 
                 [line addObject:[NSColor colorWithCalibratedHue:colorVal
                                                      saturation:1
