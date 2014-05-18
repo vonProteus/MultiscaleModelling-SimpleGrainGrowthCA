@@ -29,7 +29,7 @@
     transitionRules = Rules1;
     neighborsType = MoorNeighborhood;
     behavior = NormalGrowth;
-    energyDystrybution = Homogenous;
+    energyDystrybution = HomogenousInGrain;
     NSMutableArray* caMutable = [NSMutableArray array];
 
     for (NSInteger a = 0; a < y; ++a) {
@@ -809,9 +809,23 @@
             }
 
             switch (self.energyDystrybution) {
-            case Homogenous:
+            case HomogenousInGrain:
                 cell.energy = energyForGrain / [size floatValue];
                 break;
+            case Homogenous:
+                cell.energy = energyForGrain;
+                break;
+            case Heterogenous: {
+                CGFloat r = sqrt([size floatValue] / M_PI);
+                CGFloat borderLenght = M_2_PI * r;
+                CGFloat energyForBorder = 0.7 * energyForGrain;
+                CGFloat energyForInside = energyForGrain - energyForBorder;
+                if (cell.isOnBorder) {
+                    cell.energy = energyForBorder / borderLenght;
+                } else {
+                    cell.energy = energyForInside / ([size floatValue] - borderLenght);
+                }
+            } break;
             default:
                 break;
             }

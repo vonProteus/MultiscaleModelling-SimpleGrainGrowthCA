@@ -46,6 +46,7 @@ enum ViewType {
 };
 
 enum EnergyDystrybution {
-    Homogenous,
+    HomogenousInGrain,
     Heterogenous,
+    Homogenous,
 };

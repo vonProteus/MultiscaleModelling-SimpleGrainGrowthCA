@@ -345,6 +345,7 @@
 - (IBAction)addEnergy:(id)sender
 {
     [self.automat addEnergyForGrain:[self.tfEnergyForGrain floatValue]];
+    self.automat.behavior = Recrystalization;
 }
 
 - (IBAction)viewTypeChange:(id)sender
@@ -367,12 +368,16 @@
 {
     switch ([[sender selectedCell] tag]) {
     case 1:
-        DLog("Homogenous");
-        self.automat.energyDystrybution = Homogenous;
+        DLog("HomogenousInGrain");
+        self.automat.energyDystrybution = HomogenousInGrain;
         break;
     case 2:
         DLog("Heterogenous");
         self.automat.energyDystrybution = Heterogenous;
+        break;
+    case 3:
+        DLog("Homogenous");
+        self.automat.energyDystrybution = Homogenous;
         break;
     default:
         break;

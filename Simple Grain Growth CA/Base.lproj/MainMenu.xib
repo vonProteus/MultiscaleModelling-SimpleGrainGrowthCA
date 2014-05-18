@@ -970,10 +970,10 @@
                         </textFieldCell>
                     </textField>
                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yyf-OB-vTs">
-                        <rect key="frame" x="20" y="646" width="292" height="38"/>
+                        <rect key="frame" x="20" y="626" width="205" height="58"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        <size key="cellSize" width="157" height="18"/>
+                        <size key="cellSize" width="205" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="xoB-Km-RKy">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -981,11 +981,15 @@
                         </buttonCell>
                         <cells>
                             <column>
-                                <buttonCell type="radio" title="Energy Homogenous" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="fV9-Ut-LRt">
+                                <buttonCell type="radio" title="Energy Homogenous in grain" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="fV9-Ut-LRt">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <buttonCell type="radio" title="Energy Heterogenous" imagePosition="left" alignment="left" tag="2" inset="2" id="0Vj-7g-gm2">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="radio" title="Energy Homogenous" imagePosition="left" alignment="left" tag="3" inset="2" id="pv9-Rk-cSB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -996,7 +1000,7 @@
                         </connections>
                     </matrix>
                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DCo-xn-5JM">
-                        <rect key="frame" x="20" y="600" width="292" height="38"/>
+                        <rect key="frame" x="20" y="518" width="292" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         <size key="cellSize" width="80" height="18"/>
