@@ -318,7 +318,8 @@
         }
         X = arc4random() % self.automat.x;
         Y = arc4random() % self.automat.y;
-        energyToGo = (arc4random() % 100000) / (maxMin) + minEnergy;
+//        energyToGo = (arc4random() % 100000) / (maxMin) + minEnergy;
+        energyToGo = 3*minEnergy;
 
         switch (self.automat.transitionRules) {
         case Recrystalization: {
@@ -328,6 +329,7 @@
                                            Y:Y];
                 ++added;
                 errors = 0;
+                DLog("grain added at %li %li", X, Y);
             } else {
                 --n;
                 ++errors;
@@ -339,6 +341,7 @@
                                  Y:Y].grainId == 0) {
                 [self.automat addNewGrainAtX:X
                                            Y:Y];
+                DLog("grain added at %li %li", X, Y);
                 ++added;
                 errors = 0;
             } else {

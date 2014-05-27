@@ -77,6 +77,9 @@
     NSInteger changes = 0;
 
     switch (transitionRules) {
+    case Recrystalization: {
+
+    } break;
     case Montecarlo: {
         self.neighborsType = MoorNeighborhood;
         NSMutableArray* toGo = [NSMutableArray array];
@@ -213,10 +216,24 @@
 
     NSMutableSet* toRemove = [NSMutableSet set];
 
-    for (MKCell* cell in ans) {
-        if (!cell.willGrow) {
-            [toRemove addObject:cell];
+    switch (transitionRules) {
+    case Recrystalization:
+        for (MKCell* cell in ans) {
+            if (!cell.willGrow && !cell.wasRecristalized) {
+                [toRemove addObject:cell];
+            }
         }
+
+        break;
+
+    default:
+        for (MKCell* cell in ans) {
+            if (!cell.willGrow) {
+                [toRemove addObject:cell];
+            }
+        }
+
+        break;
     }
 
     for (MKCell* cell in toRemove) {
@@ -468,6 +485,7 @@
     case Recrystalization: {
         curentCell.wasRecristalized = YES;
         curentCell.willGrow = YES;
+        curentCell.energy = 0;
     } break;
 
     default:
@@ -794,7 +812,7 @@
         for (NSInteger b = 0; b < x; ++b) {
             MKCell* cell = [self getX:b
                                     Y:a];
-            if (cell.energy < minEnergy) {
+            if (cell.energy < minEnergy && cell.wasRecristalized == NO) {
                 minEnergy = cell.energy;
             }
         }
