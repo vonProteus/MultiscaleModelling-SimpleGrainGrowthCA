@@ -33,10 +33,6 @@ enum TransitionRules {
     Rules1,
     Rules1_4,
     Montecarlo,
-};
-
-enum Behavior {
-    NormalGrowth,
     Recrystalization,
 };
 

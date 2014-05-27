@@ -23,6 +23,7 @@
 {
     DLog("start");
     self.view.delegate = self;
+    self.status = doNothingView;
     self.automat = [[MKAutomat alloc] init];
 
     NSInteger numberOfGrainOnStart = 15;
@@ -319,19 +320,7 @@
         Y = arc4random() % self.automat.y;
         energyToGo = (arc4random() % 100000) / (maxMin) + minEnergy;
 
-        switch (self.automat.behavior) {
-        case NormalGrowth: {
-            if ([self.automat getX:X
-                                 Y:Y].grainId == 0) {
-                [self.automat addNewGrainAtX:X
-                                           Y:Y];
-                ++added;
-                errors = 0;
-            } else {
-                --n;
-                ++errors;
-            }
-        } break;
+        switch (self.automat.transitionRules) {
         case Recrystalization: {
             if ([self.automat getX:X
                                  Y:Y].energy > energyToGo) {
@@ -345,9 +334,18 @@
             }
 
         } break;
-
-        default:
-            break;
+        default: {
+            if ([self.automat getX:X
+                                 Y:Y].grainId == 0) {
+                [self.automat addNewGrainAtX:X
+                                           Y:Y];
+                ++added;
+                errors = 0;
+            } else {
+                --n;
+                ++errors;
+            }
+        } break;
         }
     }
 
@@ -373,7 +371,7 @@
 - (IBAction)addEnergy:(id)sender
 {
     [self.automat addEnergyForGrain:[self.tfEnergyForGrain floatValue]];
-    [self.automat setBehavior:Recrystalization];
+    [self.automat setTransitionRules:Recrystalization];
 }
 
 - (IBAction)viewTypeChange:(id)sender

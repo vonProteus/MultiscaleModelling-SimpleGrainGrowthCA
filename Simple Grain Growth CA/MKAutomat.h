@@ -17,7 +17,6 @@
     enum BoundaryTypes boundaryType;
     enum NeighborsTypes neighborsType;
     enum TransitionRules transitionRules;
-    enum Behavior behavior;
     enum EnergyDystrybution energyDystrybution;
     MKCell* absorbingCell;
 }
@@ -26,7 +25,6 @@
 @property (readwrite) enum BoundaryTypes boundaryType;
 @property (readwrite) enum NeighborsTypes neighborsType;
 @property (readwrite) enum TransitionRules transitionRules;
-@property (readonly) enum Behavior behavior;
 @property (readwrite) enum EnergyDystrybution energyDystrybution;
 
 - (id)init;
@@ -49,6 +47,4 @@
 - (CGFloat)minEnergy;
 
 - (void)addEnergyForGrain:(CGFloat)energyForGrain;
-
-- (void)setBehavior:(enum Behavior)newBehavior;
 @end

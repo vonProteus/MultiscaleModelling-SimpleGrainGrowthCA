@@ -12,7 +12,7 @@
 
 @implementation MKAutomat
 
-@synthesize x, y, boundaryType, neighborsType, lastId, transitionRules, behavior, energyDystrybution;
+@synthesize x, y, boundaryType, neighborsType, lastId, transitionRules, energyDystrybution;
 
 - (id)init
 {
@@ -28,7 +28,6 @@
     boundaryType = periodicBoundaryConditions;
     transitionRules = Rules1;
     neighborsType = MoorNeighborhood;
-    behavior = NormalGrowth;
     energyDystrybution = HomogenousInGrain;
     NSMutableArray* caMutable = [NSMutableArray array];
 
@@ -97,18 +96,18 @@
 
                 NSSet* neighbors = [self getAllNeighborsWhoCanGrowForX:cell.coordinateX
                                                                   andY:cell.coordinateY];
-                NSInteger energy = [neighbors count];
-                NSInteger newEnergy = [neighbors count];
+                CGFloat energy = [neighbors count];
+                CGFloat newEnergy = [neighbors count];
 
                 MKCell* newCell = [[neighbors allObjects] objectAtIndex:arc4random() % [neighbors count]];
                 NSInteger newId = newCell.grainId;
 
                 for (MKCell* neighbor in neighbors) {
                     if (neighbor.grainId == cell.grainId) {
-                        --energy;
+                        energy -= 1.0;
                     }
                     if (neighbor.grainId == newId) {
-                        --newEnergy;
+                        newEnergy -= 1.0;
                     }
                 }
 
@@ -465,9 +464,7 @@
     curentCell.isLiving = YES;
     curentCell.isOnBorder = YES;
 
-    switch (behavior) {
-    case NormalGrowth:
-        break;
+    switch (transitionRules) {
     case Recrystalization: {
         curentCell.wasRecristalized = YES;
         curentCell.willGrow = YES;
@@ -844,12 +841,10 @@
         }
     }
 }
-- (void)setBehavior:(enum Behavior)newBehavior
+- (void)setTransitionRules:(enum TransitionRules)newTransitionRules
 {
-    if (behavior != newBehavior) {
-        switch (newBehavior) {
-        case NormalGrowth:
-            break;
+    if (transitionRules != newTransitionRules) {
+        switch (newTransitionRules) {
         case Recrystalization:
             for (NSInteger a = 0; a < y; ++a) {
                 for (NSInteger b = 0; b < x; ++b) {
@@ -862,7 +857,7 @@
         default:
             break;
         }
-        behavior = newBehavior;
+        transitionRules = newTransitionRules;
     }
 }
 @end
