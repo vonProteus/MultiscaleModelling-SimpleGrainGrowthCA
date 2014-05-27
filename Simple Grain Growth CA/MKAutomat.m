@@ -78,6 +78,47 @@
 
     switch (transitionRules) {
     case Recrystalization: {
+        self.neighborsType = MoorNeighborhood;
+
+        NSMutableArray* toGo = [NSMutableArray array];
+        for (NSInteger a = 0; a < y; ++a) {
+            for (NSInteger b = 0; b < x; ++b) {
+                MKCell* currentCell = [self getX:b
+                                               Y:a];
+                if (currentCell.isOnBorder) {
+                    [toGo addObject:currentCell];
+                }
+            }
+        }
+
+        while ([toGo count] > 0) {
+            MKCell* cell = [toGo objectAtIndex:arc4random() % [toGo count]];
+            if (cell.grainId > 0) {
+
+                NSSet* neighbors = [self getAllNeighborsWhoCanGrowForX:cell.coordinateX
+                                                                  andY:cell.coordinateY];
+                CGFloat energy = cell.energy;
+                CGFloat newEnergy = 0;
+
+                MKCell* newCell = [[neighbors allObjects] objectAtIndex:arc4random() % [neighbors count]];
+                NSInteger newId = newCell.grainId;
+
+                for (MKCell* neighbor in neighbors) {
+                    energy += neighbor.energy;
+                    newEnergy += neighbor.energy;
+                }
+
+                if (newEnergy < energy) {
+                    cell.grainId = newId;
+                    cell.energy = 0;
+                    cell.willGrow = YES;
+                    [[self getPrevX:cell.coordinateX
+                                  Y:cell.coordinateY] getAllFrom:cell];
+                    ++changes;
+                }
+            }
+            [toGo removeObject:cell];
+        }
 
     } break;
     case Montecarlo: {
@@ -217,23 +258,21 @@
     NSMutableSet* toRemove = [NSMutableSet set];
 
     switch (transitionRules) {
-    case Recrystalization:
+    case Recrystalization: {
         for (MKCell* cell in ans) {
             if (!cell.willGrow && !cell.wasRecristalized) {
                 [toRemove addObject:cell];
             }
         }
+    } break;
 
-        break;
-
-    default:
+    default: {
         for (MKCell* cell in ans) {
             if (!cell.willGrow) {
                 [toRemove addObject:cell];
             }
         }
-
-        break;
+    } break;
     }
 
     for (MKCell* cell in toRemove) {
@@ -493,6 +532,7 @@
     }
 
     [prevCell getAllFrom:curentCell];
+    [self endCycle];
 
     //    [self allToLog];
 
