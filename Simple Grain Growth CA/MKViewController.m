@@ -16,7 +16,8 @@
 @property (retain, nonatomic, readwrite) MKAutomat* automat;
 @property (readwrite) enum ViewStatus status;
 @property (readwrite) enum AddNucleonsType addNucleonsType;
-@property (readwrite) NSInteger change;
+@property (readwrite) NSInteger andrzejCount;
+
 @end
 
 @implementation MKViewController
@@ -24,7 +25,7 @@
 - (void)awakeFromNib
 {
     DLog("start");
-    self.change = 1;
+
     self.view.delegate = self;
     self.status = doNothingView;
     self.automat = [[MKAutomat alloc] init];
@@ -95,23 +96,28 @@
 
 - (IBAction)andrzej:(id)sender
 {
-    switch (self.addNucleonsType) {
-    case _one:
-        break;
-    case _incrising:
-        [self.tfNumberOfGrainToCreate setStringValue:[NSString stringWithFormat:@"%li", self.tfNumberOfGrainToCreate.intValue + self.change]];
-        [self newRandomGrain:nil];
-        break;
-    case _decrising:
-        [self.tfNumberOfGrainToCreate setStringValue:[NSString stringWithFormat:@"%li", self.tfNumberOfGrainToCreate.intValue - self.change]];
-        [self newRandomGrain:nil];
-        break;
-    case _const:
-        [self newRandomGrain:nil];
-        break;
+    self.andrzejCount++;
 
-    default:
-        break;
+    if (self.andrzejCount % self.tfDoEveryX.intValue == 0) {
+
+        switch (self.addNucleonsType) {
+        case _one:
+            break;
+        case _incrising:
+            [self.tfNumberOfGrainToCreate setStringValue:[NSString stringWithFormat:@"%i", self.tfNumberOfGrainToCreate.intValue + self.tfChange.intValue]];
+            [self newRandomGrain:nil];
+            break;
+        case _decrising:
+            [self.tfNumberOfGrainToCreate setStringValue:[NSString stringWithFormat:@"%i", self.tfNumberOfGrainToCreate.intValue - self.tfChange.intValue]];
+            [self newRandomGrain:nil];
+            break;
+        case _const:
+            [self newRandomGrain:nil];
+            break;
+
+        default:
+            break;
+        }
     }
     [self.automat andrzej];
     [self.view showAutomat:self.automat];

@@ -17,6 +17,8 @@
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfGrainIdsToSave;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfNumberOfGrainToCreate;
 @property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfEnergyForGrain;
+@property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfChange;
+@property (retain, nonatomic, readwrite) IBOutlet NSTextField* tfDoEveryX;
 
 - (IBAction)andrzej:(id)sender;
 - (IBAction)andrzejToEnd:(id)sender;

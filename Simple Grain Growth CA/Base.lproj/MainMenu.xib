@@ -19,7 +19,9 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <viewController id="aRu-yi-ybQ" customClass="MKViewController">
             <connections>
+                <outlet property="tfChange" destination="q8q-ZC-AH1" id="WRZ-bD-JDB"/>
                 <outlet property="tfDislocationSize" destination="h71-wv-v4B" id="WIi-Eh-cUc"/>
+                <outlet property="tfDoEveryX" destination="vvj-XM-okJ" id="vuo-ZY-ECe"/>
                 <outlet property="tfEnergyForGrain" destination="daQ-iy-aRt" id="ETc-98-RN7"/>
                 <outlet property="tfGrainIdsToSave" destination="Q1B-do-EC0" id="uR4-8x-cXd"/>
                 <outlet property="tfInfo" destination="q5A-RF-0c6" id="xIv-Ow-ZWj"/>
@@ -1061,6 +1063,24 @@
                             <action selector="addingOfNucleonsChange:" target="aRu-yi-ybQ" id="nDt-iN-kOF"/>
                         </connections>
                     </matrix>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8q-ZC-AH1">
+                        <rect key="frame" x="166" y="326" width="146" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Change" drawsBackground="YES" id="dwd-Vb-kNU">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-XM-okJ">
+                        <rect key="frame" x="166" y="358" width="146" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="do evry x" drawsBackground="YES" id="7B7-FC-jyr">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>

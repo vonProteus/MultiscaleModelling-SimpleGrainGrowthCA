@@ -108,7 +108,7 @@
                     newEnergy += neighbor.energy;
                 }
 
-                if (newEnergy <= energy) {
+                if (newEnergy < energy) {
                     cell.grainId = newId;
                     cell.energy = 0;
                     cell.willGrow = YES;
