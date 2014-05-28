@@ -35,4 +35,5 @@
 - (IBAction)viewTypeChange:(id)sender;
 - (IBAction)energyDystrybutionChange:(id)sender;
 
+- (IBAction)addingOfNucleonsChange:(id)sender;
 @end

@@ -15,6 +15,8 @@
 @interface MKViewController ()
 @property (retain, nonatomic, readwrite) MKAutomat* automat;
 @property (readwrite) enum ViewStatus status;
+@property (readwrite) enum AddNucleonsType addNucleonsType;
+@property (readwrite) NSInteger change;
 @end
 
 @implementation MKViewController
@@ -22,6 +24,7 @@
 - (void)awakeFromNib
 {
     DLog("start");
+    self.change = 1;
     self.view.delegate = self;
     self.status = doNothingView;
     self.automat = [[MKAutomat alloc] init];
@@ -92,6 +95,24 @@
 
 - (IBAction)andrzej:(id)sender
 {
+    switch (self.addNucleonsType) {
+    case _one:
+        break;
+    case _incrising:
+        [self.tfNumberOfGrainToCreate setStringValue:[NSString stringWithFormat:@"%li", self.tfNumberOfGrainToCreate.intValue + self.change]];
+        [self newRandomGrain:nil];
+        break;
+    case _decrising:
+        [self.tfNumberOfGrainToCreate setStringValue:[NSString stringWithFormat:@"%li", self.tfNumberOfGrainToCreate.intValue - self.change]];
+        [self newRandomGrain:nil];
+        break;
+    case _const:
+        [self newRandomGrain:nil];
+        break;
+
+    default:
+        break;
+    }
     [self.automat andrzej];
     [self.view showAutomat:self.automat];
 }
@@ -318,21 +339,25 @@
         }
         X = arc4random() % self.automat.x;
         Y = arc4random() % self.automat.y;
-//        energyToGo = (arc4random() % 100000) / (maxMin) + minEnergy;
-        energyToGo = 3*minEnergy;
+        //        energyToGo = (arc4random() % 100000) / (maxMin) + minEnergy;
+        energyToGo = 3 * minEnergy;
 
         switch (self.automat.transitionRules) {
         case Recrystalization: {
-            if ([self.automat getX:X
-                                 Y:Y].energy > energyToGo) {
-                [self.automat addNewGrainAtX:X
-                                           Y:Y];
-                ++added;
-                errors = 0;
-                DLog("grain added at %li %li", X, Y);
-            } else {
-                --n;
-                ++errors;
+            MKCell* cell = [self.automat getX:X
+                                            Y:Y];
+            if (cell.grainId > 0) {
+
+                if (cell.energy > energyToGo) {
+                    [self.automat addNewGrainAtX:X
+                                               Y:Y];
+                    ++added;
+                    errors = 0;
+                    DLog("grain added at %li %li", X, Y);
+                } else {
+                    --n;
+                    ++errors;
+                }
             }
 
         } break;
@@ -407,6 +432,30 @@
     case 3:
         DLog("Homogenous");
         self.automat.energyDystrybution = Homogenous;
+        break;
+    default:
+        break;
+    }
+}
+
+- (IBAction)addingOfNucleonsChange:(id)sender
+{
+    switch ([[sender selectedCell] tag]) {
+    case 1:
+        DLog("1");
+        self.addNucleonsType = _one;
+        break;
+    case 2:
+        DLog("+");
+        self.addNucleonsType = _incrising;
+        break;
+    case 3:
+        DLog("-");
+        self.addNucleonsType = _decrising;
+        break;
+    case 4:
+        DLog("=");
+        self.addNucleonsType = _const;
         break;
     default:
         break;

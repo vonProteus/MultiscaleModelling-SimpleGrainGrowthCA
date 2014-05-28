@@ -46,3 +46,10 @@ enum EnergyDystrybution {
     Heterogenous,
     Homogenous,
 };
+
+enum AddNucleonsType {
+    _one,
+    _incrising,
+    _decrising,
+    _const,
+};
