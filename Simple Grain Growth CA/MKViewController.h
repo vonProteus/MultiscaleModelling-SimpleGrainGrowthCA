@@ -38,4 +38,6 @@
 - (IBAction)energyDystrybutionChange:(id)sender;
 
 - (IBAction)addingOfNucleonsChange:(id)sender;
+
+- (IBAction)goAllTest:(id)sender;
 @end

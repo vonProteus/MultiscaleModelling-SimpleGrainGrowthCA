@@ -467,4 +467,71 @@
         break;
     }
 }
+
+- (IBAction)goAllTest:(id)sender
+{
+    NSDate* start = [NSDate date];
+
+    self.view.delegate = self;
+    self.status = doNothingView;
+    self.automat = [[MKAutomat alloc] initWithX:100
+                                              Y:100];
+
+    NSInteger numberOfGrainOnStart = 15;
+    NSInteger numberOfDislocationOnStart = 0;
+    NSInteger maxROfDislocation = 0;
+    NSInteger maxDOfDislocation = 0;
+
+    NSInteger X = 0;
+    NSInteger Y = 0;
+
+    for (NSInteger n = 0; n < numberOfGrainOnStart; ++n) {
+        X = arc4random() % self.automat.x;
+        Y = arc4random() % self.automat.y;
+        [self.automat addNewGrainAtX:X
+                                   Y:Y];
+    }
+
+    NSInteger DR = 0;
+    for (NSInteger n = 0; n < numberOfDislocationOnStart; ++n) {
+        X = arc4random() % self.automat.x;
+        Y = arc4random() % self.automat.y;
+
+        if (arc4random() % 2 == 0) {
+            DR = arc4random() % maxDOfDislocation;
+
+            [self.automat addNewDislocationAtX:X
+                                             Y:Y
+                                         WithD:DR];
+        } else {
+            DR = arc4random() % maxROfDislocation;
+
+            [self.automat addNewDislocationAtX:X
+                                             Y:Y
+                                         WithR:DR];
+        }
+    }
+
+    self.automat.neighborsType = MoorNeighborhood;
+    self.automat.transitionRules = Rules1;
+
+    while ([self.automat andrzej] != 0) {
+    }
+    self.automat.energyDystrybution = Heterogenous;
+    [self.automat addEnergyForGrain:50];
+    [self.automat setTransitionRules:Recrystalization];
+
+    NSInteger mcs = 300;
+    while (mcs > 0) {
+        if([self.automat andrzej] == 0){
+            break;
+        }
+        
+        --mcs;
+    }
+
+    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:start];
+    ALog(@"%f", timeInterval);
+    [self.view showAutomat:self.automat];
+}
 @end
